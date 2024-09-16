@@ -1,0 +1,15 @@
+library IEEE;
+use IEEE.std_logic_1164.all;
+use IEEE.NUMERIC_STD.ALL;
+
+entity PC is
+    port(
+        address_entrada: in std_logic_vector(31 downto 0);
+        address_saida: out std_logic_vector(31 downto 0) := (others => '0')
+    );
+end PC;
+
+architecture arc_PC of PC is
+begin
+address_saida <= address_entrada;
+end arc_PC;

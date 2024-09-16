@@ -1,0 +1,514 @@
+m255
+K4
+z2
+!s11e vcom 2020.1 2020.02, Feb 28 2020
+13
+!s112 1.1
+!i10d 8192
+!i10e 25
+!i10f 100
+cModel Technology
+dG:/Meu Drive/UnB/OAC 2024.1/Trabalhos/T7
+Econtrol
+Z0 w1726441604
+Z1 DPx4 work 8 rv32_pkg 0 22 jA3?<h:km41P]0_U6M]mK3
+Z2 DPx4 ieee 11 numeric_std 0 22 aU^R8eGcicLcUFIaBQSL>3
+Z3 DPx3 std 6 textio 0 22 zE1`LPoLg^DX3Oz^4Fj1K3
+Z4 DPx4 ieee 14 std_logic_1164 0 22 cVAk:aDinOX8^VGI1ekP<3
+!i122 1624
+Z5 dG:/Meu Drive/UnB/OAC 2024.1/Trabalhos/Projeto Final
+Z6 8G:/Meu Drive/UnB/OAC 2024.1/Trabalhos/Projeto Final/CONTROL.vhd
+Z7 FG:/Meu Drive/UnB/OAC 2024.1/Trabalhos/Projeto Final/CONTROL.vhd
+l0
+L7 1
+VZ2zYi571Lj;?k`kJ_ZDV01
+!s100 kC?Qok<KDd[C:7d?m>_7K3
+Z8 OV;C;2020.1;71
+32
+Z9 !s110 1726456831
+!i10b 1
+Z10 !s108 1726456829.000000
+Z11 !s90 -reportprogress|300|-work|work|-2002|-explicit|-stats=none|G:/Meu Drive/UnB/OAC 2024.1/Trabalhos/Projeto Final/CONTROL.vhd|
+Z12 !s107 G:/Meu Drive/UnB/OAC 2024.1/Trabalhos/Projeto Final/CONTROL.vhd|
+!i113 1
+Z13 o-work work -2002 -explicit
+Z14 tExplicit 1 CvgOpt 0
+Aarc_control
+R1
+R2
+R3
+R4
+DEx4 work 7 control 0 22 Z2zYi571Lj;?k`kJ_ZDV01
+!i122 1624
+l35
+L28 124
+VPO<an1MMXoVi]jDk?ADCX3
+!s100 PZo=BKcRY`73YkleDmg]T0
+R8
+32
+R9
+!i10b 1
+R10
+R11
+R12
+!i113 1
+R13
+R14
+Emem
+Z15 w1726448102
+Z16 DPx4 ieee 16 std_logic_textio 0 22 ^l:n6VFdg74Q?CKDhjD]D3
+R2
+R3
+R4
+!i122 1625
+R5
+Z17 8G:/Meu Drive/UnB/OAC 2024.1/Trabalhos/Projeto Final/MEM.vhd
+Z18 FG:/Meu Drive/UnB/OAC 2024.1/Trabalhos/Projeto Final/MEM.vhd
+l0
+L7 1
+V2MW`V6Ec=34?h655N=;^Q3
+!s100 _28ei9fDDmcQRloF_78h`3
+R8
+32
+Z19 !s110 1726456833
+!i10b 1
+Z20 !s108 1726456831.000000
+Z21 !s90 -reportprogress|300|-work|work|-2002|-explicit|-stats=none|G:/Meu Drive/UnB/OAC 2024.1/Trabalhos/Projeto Final/MEM.vhd|
+Z22 !s107 G:/Meu Drive/UnB/OAC 2024.1/Trabalhos/Projeto Final/MEM.vhd|
+!i113 1
+R13
+R14
+Aarc_mem
+R16
+R2
+R3
+R4
+DEx4 work 3 mem 0 22 2MW`V6Ec=34?h655N=;^Q3
+!i122 1625
+l44
+L19 39
+VfLjXeIZXc7KWCmT9>IXSN0
+!s100 ^U>?ET5Og36kVd_mFoWS60
+R8
+32
+R19
+!i10b 1
+R20
+R21
+R22
+!i113 1
+R13
+R14
+Emem_rv
+Z23 w1725835071
+R16
+R2
+R3
+R4
+!i122 1164
+R5
+R17
+R18
+l0
+L7 1
+V>iOl>m5YdzXV6=P]i6MhA3
+!s100 Lj<Q21a0h:Nji_:5IX[jP0
+R8
+32
+Z24 !s110 1726414543
+!i10b 1
+Z25 !s108 1726414542.000000
+R21
+R22
+!i113 1
+R13
+R14
+Aarc_mem_rv
+R16
+R2
+R3
+R4
+DEx4 work 6 mem_rv 0 22 >iOl>m5YdzXV6=P]i6MhA3
+!i122 1164
+l45
+L20 38
+VP0Vj=WjHD]:F4gzi_16GV1
+!s100 J>kccUkD6c==kFzVhh5UN2
+R8
+32
+R24
+!i10b 1
+R25
+R21
+R22
+!i113 1
+R13
+R14
+Emux
+Z26 w1726439167
+R2
+R3
+R4
+!i122 1626
+R5
+Z27 8G:/Meu Drive/UnB/OAC 2024.1/Trabalhos/Projeto Final/MUX.vhd
+Z28 FG:/Meu Drive/UnB/OAC 2024.1/Trabalhos/Projeto Final/MUX.vhd
+l0
+L5 1
+VQKj6KnS[[R_gSc[AI<?[O2
+!s100 zlV3Z1aBl4ReYJUU]U8[J3
+R8
+32
+Z29 !s110 1726456834
+!i10b 1
+Z30 !s108 1726456833.000000
+Z31 !s90 -reportprogress|300|-work|work|-2002|-explicit|-stats=none|G:/Meu Drive/UnB/OAC 2024.1/Trabalhos/Projeto Final/MUX.vhd|
+Z32 !s107 G:/Meu Drive/UnB/OAC 2024.1/Trabalhos/Projeto Final/MUX.vhd|
+!i113 1
+R13
+R14
+Aarc_mux
+R2
+R3
+R4
+DEx4 work 3 mux 0 22 QKj6KnS[[R_gSc[AI<?[O2
+!i122 1626
+l15
+L14 11
+VMW0^ZOoCO?:B;DT_M_DeL3
+!s100 9<:2P@J>HQ1<>[Zf58o9:2
+R8
+32
+R29
+!i10b 1
+R30
+R31
+R32
+!i113 1
+R13
+R14
+Epc
+Z33 w1726439186
+R2
+R3
+R4
+!i122 1627
+R5
+Z34 8G:/Meu Drive/UnB/OAC 2024.1/Trabalhos/Projeto Final/PC.vhd
+Z35 FG:/Meu Drive/UnB/OAC 2024.1/Trabalhos/Projeto Final/PC.vhd
+l0
+L5 1
+V2gCj2P_?M1AOA]]8]^HR:1
+!s100 Qa`c??5nTWOL]90Lj_Z3^1
+R8
+32
+Z36 !s110 1726456836
+!i10b 1
+Z37 !s108 1726456834.000000
+Z38 !s90 -reportprogress|300|-work|work|-2002|-explicit|-stats=none|G:/Meu Drive/UnB/OAC 2024.1/Trabalhos/Projeto Final/PC.vhd|
+Z39 !s107 G:/Meu Drive/UnB/OAC 2024.1/Trabalhos/Projeto Final/PC.vhd|
+!i113 1
+R13
+R14
+Aarc_pc
+R2
+R3
+R4
+DEx4 work 2 pc 0 22 2gCj2P_?M1AOA]]8]^HR:1
+!i122 1627
+l15
+L14 10
+VZCYPYAg1c2A4UAK9;KiCm1
+!s100 Ao?QAd2?1oA]Z>g]Mc>QN1
+R8
+32
+R36
+!i10b 1
+R37
+R38
+R39
+!i113 1
+R13
+R14
+Eprocessador
+Z40 w1726456825
+R2
+R3
+R4
+!i122 1628
+R5
+Z41 8G:/Meu Drive/UnB/OAC 2024.1/Trabalhos/Projeto Final/processador.vhd
+Z42 FG:/Meu Drive/UnB/OAC 2024.1/Trabalhos/Projeto Final/processador.vhd
+l0
+L5 1
+Vg0MEz7Uk54Mai`RNnl0J>2
+!s100 FOJ?:mTI22k]kNMbGQ9G61
+R8
+32
+Z43 !s110 1726456837
+!i10b 1
+Z44 !s108 1726456836.000000
+Z45 !s90 -reportprogress|300|-work|work|-2002|-explicit|-stats=none|G:/Meu Drive/UnB/OAC 2024.1/Trabalhos/Projeto Final/processador.vhd|
+Z46 !s107 G:/Meu Drive/UnB/OAC 2024.1/Trabalhos/Projeto Final/processador.vhd|
+!i113 1
+R13
+R14
+Abehavior
+R2
+R3
+R4
+DEx4 work 11 processador 0 22 g0MEz7Uk54Mai`RNnl0J>2
+!i122 1628
+l114
+L13 161
+V4bN>a]BCLlW=>FWl76Q;Q3
+!s100 A1I>4IE1KQSa6eRVJj0:F3
+R8
+32
+R43
+!i10b 1
+R44
+R45
+R46
+!i113 1
+R13
+R14
+Ereg_instruction
+Z47 w1726448055
+R2
+R3
+R4
+!i122 1629
+R5
+Z48 8G:/Meu Drive/UnB/OAC 2024.1/Trabalhos/Projeto Final/REG INSTRUCTION.vhd
+Z49 FG:/Meu Drive/UnB/OAC 2024.1/Trabalhos/Projeto Final/REG INSTRUCTION.vhd
+l0
+L5 1
+VnNzLzcaDFAYSb[<P7C0e13
+!s100 _1]kkMJVf7f4iU?WYI]dW2
+R8
+32
+Z50 !s110 1726456839
+!i10b 1
+Z51 !s108 1726456838.000000
+Z52 !s90 -reportprogress|300|-work|work|-2002|-explicit|-stats=none|G:/Meu Drive/UnB/OAC 2024.1/Trabalhos/Projeto Final/REG INSTRUCTION.vhd|
+Z53 !s107 G:/Meu Drive/UnB/OAC 2024.1/Trabalhos/Projeto Final/REG INSTRUCTION.vhd|
+!i113 1
+R13
+R14
+Aarc_reg_instruction
+R2
+R3
+R4
+DEx4 work 15 reg_instruction 0 22 nNzLzcaDFAYSb[<P7C0e13
+!i122 1629
+l21
+L19 16
+VHh;EgNT2P8abIBLamFnFC0
+!s100 OG3Rnj_K>m470gZ@hO>:a0
+R8
+32
+R50
+!i10b 1
+R51
+R52
+R53
+!i113 1
+R13
+R14
+Prv32_pkg
+R2
+R3
+R4
+!i122 1506
+Z54 w1726087571
+R5
+Z55 8G:/Meu Drive/UnB/OAC 2024.1/Trabalhos/Projeto Final/RV32_Multi_pkg.vhd
+Z56 FG:/Meu Drive/UnB/OAC 2024.1/Trabalhos/Projeto Final/RV32_Multi_pkg.vhd
+l0
+L5 1
+VjA3?<h:km41P]0_U6M]mK3
+!s100 TgIGSZnmVm^bdlP:=mc7h2
+R8
+32
+Z57 !s110 1726439405
+!i10b 1
+Z58 !s108 1726439403.000000
+Z59 !s90 -reportprogress|300|-work|work|-2002|-explicit|-stats=none|G:/Meu Drive/UnB/OAC 2024.1/Trabalhos/Projeto Final/RV32_Multi_pkg.vhd|
+Z60 !s107 G:/Meu Drive/UnB/OAC 2024.1/Trabalhos/Projeto Final/RV32_Multi_pkg.vhd|
+!i113 1
+R13
+R14
+Bbody
+R1
+R2
+R3
+R4
+!i122 1506
+l0
+L93 1
+VU7;1?n6oCb`?80IbameS>3
+!s100 A<2zk:A12G^cL3:gZPH3]1
+R8
+32
+R57
+!i10b 1
+R58
+R59
+R60
+!i113 1
+R13
+R14
+Etb_control
+Z61 w1726412852
+R2
+R3
+R4
+!i122 1508
+R5
+Z62 8G:/Meu Drive/UnB/OAC 2024.1/Trabalhos/Projeto Final/tb_control.vhd
+Z63 FG:/Meu Drive/UnB/OAC 2024.1/Trabalhos/Projeto Final/tb_control.vhd
+l0
+L5 1
+Vd>m6?1ThP?TG1o;01GFlb0
+!s100 CdO4?8mmegRDUeUZDeHJI3
+R8
+32
+Z64 !s110 1726439408
+!i10b 1
+Z65 !s108 1726439407.000000
+Z66 !s90 -reportprogress|300|-work|work|-2002|-explicit|-stats=none|G:/Meu Drive/UnB/OAC 2024.1/Trabalhos/Projeto Final/tb_control.vhd|
+Z67 !s107 G:/Meu Drive/UnB/OAC 2024.1/Trabalhos/Projeto Final/tb_control.vhd|
+!i113 1
+R13
+R14
+Aarq_tb_control
+R2
+R3
+R4
+DEx4 work 10 tb_control 0 22 d>m6?1ThP?TG1o;01GFlb0
+!i122 1508
+l50
+L8 196
+V^IbeX3foRGN[M6XL:O7Z73
+!s100 JYX]dk`iMcVA;6m88R]E93
+R8
+32
+R64
+!i10b 1
+R65
+R66
+R67
+!i113 1
+R13
+R14
+Etb_processador
+Z68 w1726445268
+R2
+R3
+R4
+!i122 1630
+R5
+Z69 8G:/Meu Drive/UnB/OAC 2024.1/Trabalhos/Projeto Final/tb_processador.vhd
+Z70 FG:/Meu Drive/UnB/OAC 2024.1/Trabalhos/Projeto Final/tb_processador.vhd
+l0
+L5 1
+VXma[?ZoZR5LbWeiRZ3`5W1
+!s100 `:hJKm?Wf=2jFmolj=FTc0
+R8
+32
+Z71 !s110 1726456840
+!i10b 1
+Z72 !s108 1726456839.000000
+Z73 !s90 -reportprogress|300|-work|work|-2002|-explicit|-stats=none|G:/Meu Drive/UnB/OAC 2024.1/Trabalhos/Projeto Final/tb_processador.vhd|
+Z74 !s107 G:/Meu Drive/UnB/OAC 2024.1/Trabalhos/Projeto Final/tb_processador.vhd|
+!i113 1
+R13
+R14
+Aarq_tb_processador
+R2
+R3
+R4
+Z75 DEx4 work 14 tb_processador 0 22 Xma[?ZoZR5LbWeiRZ3`5W1
+!i122 1630
+l18
+Z76 L8 28
+Z77 V]DQBKR06k@HNfiKDGWLPi0
+Z78 !s100 iL=b2=734I<>BW4z1__I00
+R8
+32
+R71
+!i10b 1
+R72
+R73
+R74
+!i113 1
+R13
+R14
+Etestbench
+Z79 w1726403809
+R2
+R3
+R4
+!i122 1081
+R5
+R69
+R70
+l0
+L5 1
+V8UO<359bCNHKGYneH:?V13
+!s100 MTAB^bMb96MmMIUN@[1PY3
+R8
+32
+Z80 !s110 1726412704
+!i10b 1
+Z81 !s108 1726412702.000000
+R73
+R74
+!i113 1
+R13
+R14
+Abehavior
+R2
+R3
+R4
+DEx4 work 9 testbench 0 22 8UO<359bCNHKGYneH:?V13
+!i122 1081
+l18
+L8 27
+V>19Y28?0>k^LbC=zM1;<O1
+!s100 XIXj_9ImD=a>6ZAd=E:ZD2
+R8
+32
+R80
+!i10b 1
+R81
+R73
+R74
+!i113 1
+R13
+R14
+Aarq_testbench
+R16
+R2
+R3
+R4
+DEx4 work 9 testbench 0 22 WPNH6?hD<5U9HYWkOad:[2
+!i122 212
+l33
+L10 65
+VbjjFMfZIe_g6kbJ5OVQH]2
+!s100 @:2H[DVS>A:A?68^C<JO12
+R8
+32
+!s110 1725923497
+!i10b 1
+!s108 1725923497.000000
+!s90 -reportprogress|300|-work|work|-2002|-explicit|-stats=none|G:\Meu Drive\UnB\OAC 2024.1\Trabalhos\Projeto Final\testbench.vhd|
+!s107 G:\Meu Drive\UnB\OAC 2024.1\Trabalhos\Projeto Final\testbench.vhd|
+!i113 1
+R13
+R14
+w1725910881
+FG:\Meu Drive\UnB\OAC 2024.1\Trabalhos\Projeto Final\testbench.vhd
+8G:\Meu Drive\UnB\OAC 2024.1\Trabalhos\Projeto Final\testbench.vhd
