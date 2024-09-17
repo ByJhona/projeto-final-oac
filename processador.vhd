@@ -4,7 +4,7 @@ USE ieee.numeric_std.ALL;
 
 ENTITY processador IS
         PORT (
-                clock : IN STD_LOGIC := 0;
+                clock : IN STD_LOGIC := '0';
                 address : IN STD_LOGIC_VECTOR(31 DOWNTO 0):= (others => '0')
         );
 
@@ -124,9 +124,9 @@ BEGIN
         uut_MUX01 : MUX01 PORT MAP(
                 IouD ,
 		saida_PC,
-		x"00000000" ,
+		x"00000000",
 		saida_MUX01 
-        ); 
+        );
         
 
         endereco_MEM <= saida_MUX01(13 DOWNTO 2);
