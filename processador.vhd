@@ -104,8 +104,8 @@ ARCHITECTURE behavior OF processador IS
         -- Configuração ULA
         SIGNAL zero : STD_LOGIC := '0';
 
-        -- Configuração MUX01
-        signal saida_MUX01 : std_logic_vector(31 downto 0);
+        -- Configuração MUX_IouD
+        signal saida_MUX_IouD : std_logic_vector(31 downto 0);
 
         -- Configuração MEM
         SIGNAL endereco_MEM : STD_LOGIC_VECTOR(11 DOWNTO 0);
@@ -121,14 +121,13 @@ BEGIN
                 saida_PC
         );
 
-        uut_MUX01 : MUX01 PORT MAP(
+        uut_MUX_IouD : MUX_IouD PORT MAP(
                 IouD ,
 		saida_PC,
 		x"00000000" ,
 		saida_MUX01 
         ); 
         
-
         endereco_MEM <= saida_MUX01(13 DOWNTO 2);
         uut_MEM : MEM PORT MAP(
                 clock,
@@ -156,7 +155,6 @@ BEGIN
                 EscreveReg => EscreveReg,
                 Mem2Reg => Mem2Reg
         );
-
 
         uut_REG_INSTRUCTION : REG_INSTRUCTION PORT MAP(
                 clock,
