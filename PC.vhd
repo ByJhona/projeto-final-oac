@@ -16,7 +16,6 @@ BEGIN
     PROCESS (clock)
     BEGIN
         IF (rising_edge(clock) AND enable = '1') THEN
-
             endereco_saida <= endereco_entrada;
         END IF;
     END PROCESS;
