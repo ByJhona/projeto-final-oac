@@ -7,8 +7,8 @@ USE work.RV32_pkg.ALL;
 ENTITY CONTROL IS
 	PORT (
 		clock : IN STD_LOGIC;
-
 		opcode : IN STD_LOGIC_VECTOR(6 DOWNTO 0) := (others => '0');
+		
 		EscrevePCCond : OUT STD_LOGIC := '0';
 		EscrevePC : OUT STD_LOGIC := '0';
 		IouD : OUT STD_LOGIC := '0';

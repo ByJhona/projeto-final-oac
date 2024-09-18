@@ -1,35 +1,42 @@
-LIBRARY ieee;
-USE ieee.std_logic_1164.ALL;
-USE ieee.numeric_std.ALL;
+library ieee;
+use ieee.std_logic_1164.all;
+use ieee.numeric_std.all;
 
-ENTITY tb_processador IS
-END tb_processador;
+entity tb_CPU is
+end entity tb_CPU;
 
-ARCHITECTURE arq_tb_processador OF tb_processador IS
-        COMPONENT processador IS
-                PORT (
-                        clock : IN STD_LOGIC;
-                        address : IN STD_LOGIC_VECTOR(31 DOWNTO 0));
-        END COMPONENT;
-        SIGNAL address : STD_LOGIC_VECTOR(31 DOWNTO 0) := x"00000000";
-        signal clock : std_logic;
-        CONSTANT clk_period : TIME := 20 ns;
+architecture Behavioral of tb_CPU is
+    signal clk      : std_logic := '0';
+    signal reset    : std_logic := '0';
+    signal opcode   : std_logic_vector(6 downto 0) := (others => '0');
+    signal pc_out   : std_logic_vector(31 downto 0);
+    signal mem_out  : std_logic_vector(31 downto 0);
 
-BEGIN
+    constant clk_period : time := 10 ns;
 
-        uut_processador : processador PORT MAP(
-                clock,
-                address
+begin
+    -- Instantiate the CPU
+    uut: entity work.CPU
+        port map (
+            clock   => clk
         );
 
-        GERACAO_CLOCK : PROCESS
-        BEGIN
+    -- Clock generation process
+    clk_process : process
+    begin
+        clk <= '0';
+        wait for clk_period / 2;
+        clk <= '1';
+        wait for clk_period / 2;
+    end process;
 
-                FOR i IN 0 TO 255 LOOP
-                        clock <= '0';
-                        WAIT FOR clk_period/2;
-                        clock <= '1';
-                        WAIT FOR clk_period/2;
-                END LOOP;
-        END PROCESS;
-END;
+    stim_proc : process
+    begin
+        
+        report "mem_out value: " & std_logic_vector'IMAGE(mem_out);
+
+        wait for 100 ns;
+
+    end process;
+
+end architecture Behavioral;

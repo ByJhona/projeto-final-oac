@@ -5,7 +5,6 @@ use ieee.numeric_std.all;
 ENTITY CPU IS
     PORT (
         clock : IN STD_LOGIC := '0';
-        reset : IN STD_LOGIC := '0';
         dataout : OUT STD_LOGIC_VECTOR(31 DOWNTO 0) := (OTHERS => '0') -- Connects to MEM's dataout
     );
 END CPU;
@@ -13,7 +12,7 @@ END CPU;
 architecture behavior of CPU is
         
         -- Signals for PC, MEM, and MUX connections
-        signal pc_address : std_logic_vector(31 downto 0);  -- Output from PC (current PC)
+        signal pc_address  : std_logic_vector(31 downto 0);  -- Output from PC (current PC)
         signal mem_address : std_logic_vector(11 downto 0); -- Address sent to memory
         signal mem_dataout : std_logic_vector(31 downto 0); -- Data read from memory
         signal mem_datain  : std_logic_vector(31 downto 0); -- Data to be written into memory
@@ -21,7 +20,9 @@ architecture behavior of CPU is
         signal we, re      : std_logic;                     -- Write/Read enable for MEM
         signal ioud_sinal  : std_logic;                     -- Control signal for MUX_IouD
         signal escreve_pc, escreve_mem, le_mem : std_logic; -- Control signals from Control
-        signal pc_enable : std_logic;  -- Control signal to enable writing to PC
+        signal pc_enable   : std_logic;  -- Control signal to enable writing to PC
+        signal opcode      : std_logic_vector(6 downto 0);  -- Instruction opcode
+        
     
     begin
         -- PC Instance
@@ -66,7 +67,6 @@ architecture behavior of CPU is
     
         -- Connect PC output (pc_address) to the memory's address input (mem_address)
         mem_address <= std_logic_vector(pc_address(11 downto 0));  -- Connect the lower 12 bits
+        opcode <= std_logic_vector(dataout(6 downto 0));
     
     end architecture behavior;
-    
-
