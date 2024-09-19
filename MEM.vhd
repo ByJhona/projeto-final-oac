@@ -4,26 +4,29 @@ USE IEEE.NUMERIC_STD.ALL;
 USE ieee.std_logic_textio.ALL;
 USE std.textio.ALL;
 
-ENTITY MEM IS
-    PORT (
-        clock : IN STD_LOGIC := '0';
-        we : IN STD_LOGIC := '0';
-        re : IN STD_LOGIC := '1';
-        address : IN STD_LOGIC_VECTOR(11 DOWNTO 0) := (OTHERS => '0');
-        datain : IN STD_LOGIC_VECTOR(31 DOWNTO 0) := (OTHERS => '0');
-        dataout : OUT STD_LOGIC_VECTOR(31 DOWNTO 0) := (OTHERS => '0')
+entity MEM is
+    port (
+
+        clock : in std_logic := '0';
+        we : in std_logic := '0';
+        re : in std_logic := '1';
+        address : in std_logic_vector(11 downto 0) := (others => '0');
+        data_in : in std_logic_vector(31 downto 0) := (others => '0');
+
+        mem_out : out std_logic_vector(31 downto 0) := (others => '0')
     );
 
-END MEM;
+end MEM;
 
-ARCHITECTURE arc_MEM OF MEM IS
-    TYPE ram_type IS ARRAY (0 TO (2 ** address'length) - 1) OF STD_LOGIC_VECTOR(datain'RANGE);
+architecture behavior of MEM is
+
+    type ram_type is array (0 to (2 ** address'length) - 1) of std_logic_vector(data_in'RANGE);
 
     IMPURE FUNCTION init_ram RETURN ram_type IS
         FILE text_file : text OPEN read_mode IS "instruction.txt";
         VARIABLE text_line : line;
         VARIABLE ram_content : ram_type;
-        VARIABLE read_value : STD_LOGIC_VECTOR(datain'RANGE); -- Variável auxiliar
+        VARIABLE read_value : std_logic_vector(data_in'RANGE); -- Variável auxiliar
     BEGIN
         FOR i IN 0 TO (2 ** address'length - 1) LOOP
 
@@ -40,18 +43,19 @@ ARCHITECTURE arc_MEM OF MEM IS
     END FUNCTION;
 
     SIGNAL mem : ram_type := init_ram;
-    SIGNAL read_address : STD_LOGIC_VECTOR(address'RANGE);
+    SIGNAL read_address : std_logic_vector(address'RANGE);
+
 BEGIN
 
-    LEITURA_ESCRITA : PROCESS (clock)
-    BEGIN
+    read_write : process (clock)
+    begin
         -- Escrita
-        IF (we = '1' AND rising_edge(clock)) THEN
-            mem(to_integer(unsigned(address))) <= datain;
+        if (we = '1' and rising_edge(clock)) then
+            mem(to_integer(unsigned(address))) <= data_in;
 
-        ELSIF (re = '1') THEN
-            dataout <= mem(to_integer(unsigned(address)));
-        END IF;
-    END PROCESS;
+        elsif (re = '1') then
+            mem_out <= mem(to_integer(unsigned(address)));
+        end if;
+    end process;
 
-END arc_MEM;
+end behavior;

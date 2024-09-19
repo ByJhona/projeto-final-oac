@@ -2,30 +2,29 @@ LIBRARY IEEE;
 USE IEEE.std_logic_1164.ALL;
 USE IEEE.NUMERIC_STD.ALL;
 
-ENTITY MUX_IouD IS
-	PORT (
-		-- Entradas
-		IouD_sinal : IN STD_LOGIC := '0';
-		instrucao  : IN STD_LOGIC_VECTOR(31 DOWNTO 0);
-		saida_ULA  : IN STD_LOGIC_VECTOR(31 DOWNTO 0);
+entity MUX_IouD is
+	port (
+		
+		IouD_signal  : in std_logic := '0';
+		instruction  : in std_logic_vector(31 downto 0);
+		data         : in std_logic_vector(31 downto 0);
 
-		-- Saída
-		saida      : OUT STD_LOGIC_VECTOR(31 DOWNTO 0)
+		mux_out      : out std_logic_vector(31 downto 0)
 	);
-END MUX_IouD;
+end MUX_IouD;
 
-ARCHITECTURE behavior OF MUX_IouD IS
-BEGIN
-	PROCESS (IouD_sinal, instrucao, saida_ULA)
-	BEGIN
-		CASE IouD_sinal IS
+architecture behavior of MUX_IouD is
+begin
+	process (IouD_signal, instruction, data)
+	begin
+		case IouD_signal is
 
-			WHEN '0' => saida <= instrucao;
+			when '0' => mux_out <= instruction;
 
-			WHEN '1' => saida <= saida_ULA;
+			when '1' => mux_out <= data;
 
-			WHEN OTHERS => saida <= x"00000000";
+			when others => mux_out <= x"00000000";
 
-		END CASE;
-	END PROCESS;
-END behavior;
+		end case;
+	end process;
+end behavior;
