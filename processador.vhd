@@ -6,6 +6,7 @@ ENTITY processador IS
         PORT (
                 clock : IN STD_LOGIC := 0;
                 address : IN STD_LOGIC_VECTOR(31 DOWNTO 0):= (others => '0')
+                instruction : OUT std_logic_vector(31 downto 0)
         );
 
 END processador;
@@ -138,6 +139,8 @@ BEGIN
                 entrada_MEM,
                 saida_MEM
         );
+
+        instruction <= saida_MEM;
 
         uut_CONTROL : CONTROL PORT MAP(
                 clock,

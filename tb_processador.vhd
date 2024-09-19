@@ -9,7 +9,10 @@ ARCHITECTURE arq_tb_processador OF tb_processador IS
         COMPONENT processador IS
                 PORT (
                         clock : IN STD_LOGIC;
-                        address : IN STD_LOGIC_VECTOR(31 DOWNTO 0));
+                        address : IN STD_LOGIC_VECTOR(31 DOWNTO 0);
+                        instruction : OUT std_logic_vector(31 downto 0)
+                );
+                        
         END COMPONENT;
         SIGNAL address : STD_LOGIC_VECTOR(31 DOWNTO 0) := x"00000000";
         signal clock : std_logic;
@@ -19,7 +22,8 @@ BEGIN
 
         uut_processador : processador PORT MAP(
                 clock,
-                address
+                address,
+                instruction
         );
 
         GERACAO_CLOCK : PROCESS
@@ -32,4 +36,11 @@ BEGIN
                         WAIT FOR clk_period/2;
                 END LOOP;
         END PROCESS;
+        
+        stim_process : process
+        begin
+        	
+            report std_logic_vector'IMAGE(instruction);
+            
+        end process
 END;
