@@ -1,13 +1,4 @@
-{G:/Meu Drive/UnB/OAC 2024.1/Trabalhos/Projeto Final/REG INSTRUCTION.vhd} {1 {vcom -work work -2002 -explicit -stats=none {G:/Meu Drive/UnB/OAC 2024.1/Trabalhos/Projeto Final/REG INSTRUCTION.vhd}
-Model Technology ModelSim - Intel FPGA Edition vcom 2020.1 Compiler 2020.02 Feb 28 2020
--- Loading package STANDARD
--- Loading package TEXTIO
--- Loading package std_logic_1164
--- Loading package NUMERIC_STD
--- Compiling entity REG_INSTRUCTION
--- Compiling architecture arc_REG_INSTRUCTION of REG_INSTRUCTION
-
-} {} {}} {G:/Meu Drive/UnB/OAC 2024.1/Trabalhos/Projeto Final/CONTROL.vhd} {1 {vcom -work work -2002 -explicit -stats=none {G:/Meu Drive/UnB/OAC 2024.1/Trabalhos/Projeto Final/CONTROL.vhd}
+{G:/Meu Drive/UnB/OAC 2024.1/Trabalhos/Projeto Final/CONTROL.vhd} {1 {vcom -work work -2002 -explicit -stats=none {G:/Meu Drive/UnB/OAC 2024.1/Trabalhos/Projeto Final/CONTROL.vhd}
 Model Technology ModelSim - Intel FPGA Edition vcom 2020.1 Compiler 2020.02 Feb 28 2020
 -- Loading package STANDARD
 -- Loading package TEXTIO
@@ -17,14 +8,23 @@ Model Technology ModelSim - Intel FPGA Edition vcom 2020.1 Compiler 2020.02 Feb 
 -- Compiling entity CONTROL
 -- Compiling architecture arc_CONTROL of CONTROL
 
-} {} {}} {G:/Meu Drive/UnB/OAC 2024.1/Trabalhos/Projeto Final/MUX.vhd} {1 {vcom -work work -2002 -explicit -stats=none {G:/Meu Drive/UnB/OAC 2024.1/Trabalhos/Projeto Final/MUX.vhd}
+} {} {}} {G:/Meu Drive/UnB/OAC 2024.1/Trabalhos/Projeto Final/XREGS.vhd} {1 {vcom -work work -2002 -explicit -stats=none {G:/Meu Drive/UnB/OAC 2024.1/Trabalhos/Projeto Final/XREGS.vhd}
 Model Technology ModelSim - Intel FPGA Edition vcom 2020.1 Compiler 2020.02 Feb 28 2020
 -- Loading package STANDARD
 -- Loading package TEXTIO
 -- Loading package std_logic_1164
 -- Loading package NUMERIC_STD
--- Compiling entity MUX
--- Compiling architecture arc_MUX of MUX
+-- Compiling entity XREGS
+-- Compiling architecture arc_XREGS of XREGS
+
+} {} {}} {G:/Meu Drive/UnB/OAC 2024.1/Trabalhos/Projeto Final/ULA.vhd} {1 {vcom -work work -2002 -explicit -stats=none {G:/Meu Drive/UnB/OAC 2024.1/Trabalhos/Projeto Final/ULA.vhd}
+Model Technology ModelSim - Intel FPGA Edition vcom 2020.1 Compiler 2020.02 Feb 28 2020
+-- Loading package STANDARD
+-- Loading package TEXTIO
+-- Loading package std_logic_1164
+-- Loading package NUMERIC_STD
+-- Compiling entity ULA
+-- Compiling architecture arc_ULA of ULA
 
 } {} {}} {G:/Meu Drive/UnB/OAC 2024.1/Trabalhos/Projeto Final/tb_processador.vhd} {1 {vcom -work work -2002 -explicit -stats=none {G:/Meu Drive/UnB/OAC 2024.1/Trabalhos/Projeto Final/tb_processador.vhd}
 Model Technology ModelSim - Intel FPGA Edition vcom 2020.1 Compiler 2020.02 Feb 28 2020
@@ -35,6 +35,15 @@ Model Technology ModelSim - Intel FPGA Edition vcom 2020.1 Compiler 2020.02 Feb 
 -- Compiling entity tb_processador
 -- Compiling architecture arq_tb_processador of tb_processador
 
+} {} {}} {G:/Meu Drive/UnB/OAC 2024.1/Trabalhos/Projeto Final/MUX.vhd} {1 {vcom -work work -2002 -explicit -stats=none {G:/Meu Drive/UnB/OAC 2024.1/Trabalhos/Projeto Final/MUX.vhd}
+Model Technology ModelSim - Intel FPGA Edition vcom 2020.1 Compiler 2020.02 Feb 28 2020
+-- Loading package STANDARD
+-- Loading package TEXTIO
+-- Loading package std_logic_1164
+-- Loading package NUMERIC_STD
+-- Compiling entity MUX
+-- Compiling architecture arc_MUX of MUX
+
 } {} {}} {G:/Meu Drive/UnB/OAC 2024.1/Trabalhos/Projeto Final/PC.vhd} {1 {vcom -work work -2002 -explicit -stats=none {G:/Meu Drive/UnB/OAC 2024.1/Trabalhos/Projeto Final/PC.vhd}
 Model Technology ModelSim - Intel FPGA Edition vcom 2020.1 Compiler 2020.02 Feb 28 2020
 -- Loading package STANDARD
@@ -43,6 +52,24 @@ Model Technology ModelSim - Intel FPGA Edition vcom 2020.1 Compiler 2020.02 Feb 
 -- Loading package NUMERIC_STD
 -- Compiling entity PC
 -- Compiling architecture arc_PC of PC
+
+} {} {}} {G:/Meu Drive/UnB/OAC 2024.1/Trabalhos/Projeto Final/processador.vhd} {1 {vcom -work work -2002 -explicit -stats=none {G:/Meu Drive/UnB/OAC 2024.1/Trabalhos/Projeto Final/processador.vhd}
+Model Technology ModelSim - Intel FPGA Edition vcom 2020.1 Compiler 2020.02 Feb 28 2020
+-- Loading package STANDARD
+-- Loading package TEXTIO
+-- Loading package std_logic_1164
+-- Loading package NUMERIC_STD
+-- Compiling entity processador
+-- Compiling architecture behavior of processador
+
+} {} {}} {G:/Meu Drive/UnB/OAC 2024.1/Trabalhos/Projeto Final/MUX_BULA.vhd} {1 {vcom -work work -2002 -explicit -stats=none {G:/Meu Drive/UnB/OAC 2024.1/Trabalhos/Projeto Final/MUX_BULA.vhd}
+Model Technology ModelSim - Intel FPGA Edition vcom 2020.1 Compiler 2020.02 Feb 28 2020
+-- Loading package STANDARD
+-- Loading package TEXTIO
+-- Loading package std_logic_1164
+-- Loading package NUMERIC_STD
+-- Compiling entity MUX_BULA
+-- Compiling architecture behavior of MUX_BULA
 
 } {} {}} {G:/Meu Drive/UnB/OAC 2024.1/Trabalhos/Projeto Final/MEM.vhd} {1 {vcom -work work -2002 -explicit -stats=none {G:/Meu Drive/UnB/OAC 2024.1/Trabalhos/Projeto Final/MEM.vhd}
 Model Technology ModelSim - Intel FPGA Edition vcom 2020.1 Compiler 2020.02 Feb 28 2020
@@ -53,5 +80,59 @@ Model Technology ModelSim - Intel FPGA Edition vcom 2020.1 Compiler 2020.02 Feb 
 -- Loading package std_logic_textio
 -- Compiling entity MEM
 -- Compiling architecture arc_MEM of MEM
+
+} {} {}} {G:/Meu Drive/UnB/OAC 2024.1/Trabalhos/Projeto Final/REG INSTRUCTION.vhd} {1 {vcom -work work -2002 -explicit -stats=none {G:/Meu Drive/UnB/OAC 2024.1/Trabalhos/Projeto Final/REG INSTRUCTION.vhd}
+Model Technology ModelSim - Intel FPGA Edition vcom 2020.1 Compiler 2020.02 Feb 28 2020
+-- Loading package STANDARD
+-- Loading package TEXTIO
+-- Loading package std_logic_1164
+-- Loading package NUMERIC_STD
+-- Compiling entity REG_INSTRUCTION
+-- Compiling architecture arc_REG_INSTRUCTION of REG_INSTRUCTION
+
+} {} {}} {G:/Meu Drive/UnB/OAC 2024.1/Trabalhos/Projeto Final/GENIMM32.vhd} {1 {vcom -work work -2002 -explicit -stats=none {G:/Meu Drive/UnB/OAC 2024.1/Trabalhos/Projeto Final/GENIMM32.vhd}
+Model Technology ModelSim - Intel FPGA Edition vcom 2020.1 Compiler 2020.02 Feb 28 2020
+-- Loading package STANDARD
+-- Loading package TEXTIO
+-- Loading package std_logic_1164
+-- Loading package NUMERIC_STD
+-- Compiling entity GENIMM32
+-- Compiling architecture arc_GENIMM32 of GENIMM32
+
+} {} {}} {G:/Meu Drive/UnB/OAC 2024.1/Trabalhos/Projeto Final/ULA_A.vhd} {1 {vcom -work work -2002 -explicit -stats=none {G:/Meu Drive/UnB/OAC 2024.1/Trabalhos/Projeto Final/ULA_A.vhd}
+Model Technology ModelSim - Intel FPGA Edition vcom 2020.1 Compiler 2020.02 Feb 28 2020
+-- Loading package STANDARD
+-- Loading package TEXTIO
+-- Loading package std_logic_1164
+-- Loading package NUMERIC_STD
+-- Compiling entity ULA_A
+-- Compiling architecture behavior of ULA_A
+
+} {} {}} {G:/Meu Drive/UnB/OAC 2024.1/Trabalhos/Projeto Final/ULA_B.vhd} {1 {vcom -work work -2002 -explicit -stats=none {G:/Meu Drive/UnB/OAC 2024.1/Trabalhos/Projeto Final/ULA_B.vhd}
+Model Technology ModelSim - Intel FPGA Edition vcom 2020.1 Compiler 2020.02 Feb 28 2020
+-- Loading package STANDARD
+-- Loading package TEXTIO
+-- Loading package std_logic_1164
+-- Loading package NUMERIC_STD
+-- Compiling entity ULA_B
+-- Compiling architecture behavior of ULA_B
+
+} {} {}} {G:/Meu Drive/UnB/OAC 2024.1/Trabalhos/Projeto Final/MUX_AULA.vhd} {1 {vcom -work work -2002 -explicit -stats=none {G:/Meu Drive/UnB/OAC 2024.1/Trabalhos/Projeto Final/MUX_AULA.vhd}
+Model Technology ModelSim - Intel FPGA Edition vcom 2020.1 Compiler 2020.02 Feb 28 2020
+-- Loading package STANDARD
+-- Loading package TEXTIO
+-- Loading package std_logic_1164
+-- Loading package NUMERIC_STD
+-- Compiling entity MUX_AULA
+-- Compiling architecture behavior of MUX_AULA
+
+} {} {}} {G:/Meu Drive/UnB/OAC 2024.1/Trabalhos/Projeto Final/PCBack.vhd} {1 {vcom -work work -2002 -explicit -stats=none {G:/Meu Drive/UnB/OAC 2024.1/Trabalhos/Projeto Final/PCBack.vhd}
+Model Technology ModelSim - Intel FPGA Edition vcom 2020.1 Compiler 2020.02 Feb 28 2020
+-- Loading package STANDARD
+-- Loading package TEXTIO
+-- Loading package std_logic_1164
+-- Loading package NUMERIC_STD
+-- Compiling entity PCBack
+-- Compiling architecture behavior of PCBack
 
 } {} {}}

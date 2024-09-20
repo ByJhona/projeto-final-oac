@@ -8,18 +8,16 @@ END tb_processador;
 ARCHITECTURE arq_tb_processador OF tb_processador IS
         COMPONENT processador IS
                 PORT (
-                        clock : IN STD_LOGIC;
-                        address : IN STD_LOGIC_VECTOR(31 DOWNTO 0));
+                        clock : IN STD_LOGIC := '0'
+                        );
         END COMPONENT;
-        SIGNAL address : STD_LOGIC_VECTOR(31 DOWNTO 0) := x"00000000";
-        signal clock : std_logic;
+        signal clock : std_logic := '0';
         CONSTANT clk_period : TIME := 20 ns;
 
 BEGIN
 
         uut_processador : processador PORT MAP(
-                clock,
-                address
+                clock
         );
 
         GERACAO_CLOCK : PROCESS

@@ -71,11 +71,11 @@ BEGIN
 
 				WHEN DECODE =>
 					OrigAULA <= "00";
-					OrigBULA <= "11";
+					OrigBULA <= "10";
 					ALUop <= "00";
+					etapa_atual <= EXECUTE;					
+					EscrevePC <= '0';
 
-					etapa_atual <= EXECUTE;
-					reset <= '0';
 
 				WHEN EXECUTE =>
 
@@ -85,29 +85,28 @@ BEGIN
 							OrigBULA <= "00";
 							ALUop <= "01";
 							etapa_atual <= MEMORYACCESS;
+
 						WHEN LOAD | STORE =>
 							OrigAULA <= "01";
 							OrigBULA <= "10";
 							ALUop <= "00";
-
 							etapa_atual <= MEMORYACCESS;
-							reset <= '0';
+
 						WHEN BRANCH =>
 							OrigAULA <= "01";
 							OrigBULA <= "00";
 							ALUop <= "01";
 							EscrevePCCond <= '1';
 							OrigPC <= '1';
-
-							reset <= '1'; --Rever
 							etapa_atual <= FETCH;
+
 						WHEN JUMP_JAL =>
 							OrigPC <= '1';
 							EscrevePC <= '1';
 							EscreveReg <= '1';
 							Mem2Reg <= "01";
-							reset <= '0';
 							etapa_atual <= MEMORYACCESS;
+
 						WHEN OTHERS => NULL;
 					END CASE;
 
@@ -124,15 +123,13 @@ BEGIN
 							LeMem <= '1';
 							EscreveMem <= '1';
 							Mem2Reg <= "10";
-
 							etapa_atual <= WRITEBACK;
-							reset <= '0';
+
 						WHEN STORE =>
 							IouD <= '1';
 							EscreveMem <= '1';
-
 							etapa_atual <= FETCH;
-							reset <= '1';
+
 						WHEN OTHERS => NULL;
 
 					END CASE;
@@ -141,9 +138,7 @@ BEGIN
 				WHEN WRITEBACK =>
 					Mem2Reg <= "01";
 					EscreveReg <= '1';
-
 					etapa_atual <= FETCH;
-					reset <= '1';
 				WHEN OTHERS => NULL;
 			END CASE;
 		END IF;

@@ -1,199 +1,218 @@
 # Compile of CONTROL.vhd was successful.
-# Compile of MEM.vhd was successful.
-# Compile of MUX.vhd was successful.
-# Compile of PC.vhd was successful.
-# Compile of processador.vhd failed with 1 errors.
-# Compile of REG INSTRUCTION.vhd was successful.
-# Compile of tb_processador.vhd was successful.
-# 7 compiles, 1 failed with 1 error.
-# Compile of CONTROL.vhd was successful.
-# Compile of MEM.vhd was successful.
-# Compile of MUX.vhd was successful.
-# Compile of PC.vhd was successful.
-# Compile of processador.vhd was successful.
-# Compile of REG INSTRUCTION.vhd was successful.
-# Compile of tb_processador.vhd was successful.
-# 7 compiles, 0 failed with no errors.
 vsim -gui work.tb_processador
 # vsim -gui work.tb_processador 
-# Start time: 20:46:42 on Sep 16,2024
+# Start time: 06:44:20 on Sep 20,2024
 # Loading std.standard
 # Loading std.textio(body)
 # Loading ieee.std_logic_1164(body)
 # Loading ieee.numeric_std(body)
 # Loading work.tb_processador(arq_tb_processador)
 # Loading work.processador(behavior)
+# Loading work.ula(arc_ula)
 # Loading work.pc(arc_pc)
 # ** Warning: (vsim-3473) Component instance "uut_MUX01 : MUX01" is not bound.
 #    Time: 0 ps  Iteration: 0  Instance: /tb_processador/uut_processador File: G:/Meu Drive/UnB/OAC 2024.1/Trabalhos/Projeto Final/processador.vhd
 # Loading ieee.std_logic_textio(body)
 # Loading work.mem(arc_mem)
+# Loading work.genimm32(arc_genimm32)
 # Loading work.rv32_pkg(body)
 # Loading work.control(arc_control)
 # Loading work.reg_instruction(arc_reg_instruction)
-step
-step
-step
-step
-step
-step
-step
-step
-step
-step
-step
-step
-step
-step
-step
-step
-step
-step
-step
-step
-step
-step
-step
-step
-step
-step
-step
-step
-step
-step
-step
-step
-step
-step
-step
-step
-step
-# Next activity is in 10 ns.
-step
-step
-step
-step
-step
-step
-step
-step
-step
-step
-step
-step
-step
-step
-step
-step
-step
-step
-step
-step
-step
-step
-step
-step
-step
-step
-step
-step
-step
-# Next activity is in 10 ns.
-step
-step
-step
-step
-step
-step
-step
-step
-step
-step
-step
-step
-step
-step
-step
-step
-step
-step
-step
-step
-step
-# Next activity is in 10 ns.
-step
-step
-step
-step
-step
-step
-step
-step
-step
-step
-step
-step
-step
-step
-step
-step
-step
-step
-step
-step
-step
-step
-step
-step
-step
-step
-step
-step
-step
-step
-step
-step
-step
-# Next activity is in 10 ns.
-step
-step
-step
-step
-step
-step
-step
-step
-step
-step
-step
-add wave -position insertpoint sim:/tb_processador/*
-run -all
-# Break key hit
-# Simulation stop requested.
-restart -f
-# ** Note: (vsim-12125) Error and warning message counts have been reset to '0' because of 'restart'.
-# ** Warning: (vsim-3473) Component instance "uut_MUX01 : MUX01" is not bound.
-#    Time: 0 ps  Iteration: 0  Instance: /tb_processador/uut_processador File: G:/Meu Drive/UnB/OAC 2024.1/Trabalhos/Projeto Final/processador.vhd
-run -all
-# GetModuleFileName: Não foi possível encontrar o módulo especificado.
-# 
-# 
-# Break key hit
-# Simulation stop requested.
-restart -f -nowave
-# ** Note: (vsim-12125) Error and warning message counts have been reset to '0' because of 'restart'.
-# ** Warning: (vsim-3473) Component instance "uut_MUX01 : MUX01" is not bound.
-#    Time: 0 ps  Iteration: 0  Instance: /tb_processador/uut_processador File: G:/Meu Drive/UnB/OAC 2024.1/Trabalhos/Projeto Final/processador.vhd
-restart -f -nolist -nowave
-# ** Note: (vsim-12125) Error and warning message counts have been reset to '0' because of 'restart'.
-# ** Warning: (vsim-3473) Component instance "uut_MUX01 : MUX01" is not bound.
-#    Time: 0 ps  Iteration: 0  Instance: /tb_processador/uut_processador File: G:/Meu Drive/UnB/OAC 2024.1/Trabalhos/Projeto Final/processador.vhd
+# Loading work.xregs(arc_xregs)
+# Loading work.ula_a(behavior)
+# Loading work.ula_b(behavior)
+# Loading work.pcback(behavior)
+# Loading work.mux_aula(behavior)
+# Loading work.mux_bula(behavior)
 add wave -position insertpoint sim:/tb_processador/uut_processador/*
+# ** Warning: (vsim-WLF-5000) WLF file currently in use: vsim.wlf
+#           File in use by: jhona  Hostname: JHONBORGES  ProcessID: 14068
+#           Attempting to use alternate WLF file "./wlftdzte31".
+# ** Warning: (vsim-WLF-5001) Could not open WLF file: vsim.wlf
+#           Using alternate file: ./wlftdzte31
 run -all
-# GetModuleFileName: Não foi possível encontrar o módulo especificado.
-# 
-# 
+# ** Warning: NUMERIC_STD.TO_INTEGER: metavalue detected, returning 0
+#    Time: 4150 ns  Iteration: 2  Instance: /tb_processador/uut_processador/uut_XREGS
+# ** Warning: NUMERIC_STD.TO_INTEGER: metavalue detected, returning 0
+#    Time: 4150 ns  Iteration: 2  Instance: /tb_processador/uut_processador/uut_XREGS
+# ** Warning: NUMERIC_STD.TO_INTEGER: metavalue detected, returning 0
+#    Time: 4150 ns  Iteration: 2  Instance: /tb_processador/uut_processador/uut_XREGS
+# ** Warning: NUMERIC_STD.TO_INTEGER: metavalue detected, returning 0
+#    Time: 413750 ns  Iteration: 2  Instance: /tb_processador/uut_processador/uut_XREGS
+# ** Warning: NUMERIC_STD.TO_INTEGER: metavalue detected, returning 0
+#    Time: 413750 ns  Iteration: 2  Instance: /tb_processador/uut_processador/uut_XREGS
+# ** Warning: NUMERIC_STD.TO_INTEGER: metavalue detected, returning 0
+#    Time: 413750 ns  Iteration: 2  Instance: /tb_processador/uut_processador/uut_XREGS
+# ** Warning: NUMERIC_STD.TO_INTEGER: metavalue detected, returning 0
+#    Time: 823350 ns  Iteration: 2  Instance: /tb_processador/uut_processador/uut_XREGS
+# ** Warning: NUMERIC_STD.TO_INTEGER: metavalue detected, returning 0
+#    Time: 823350 ns  Iteration: 2  Instance: /tb_processador/uut_processador/uut_XREGS
+# ** Warning: NUMERIC_STD.TO_INTEGER: metavalue detected, returning 0
+#    Time: 823350 ns  Iteration: 2  Instance: /tb_processador/uut_processador/uut_XREGS
+# ** Warning: NUMERIC_STD.TO_INTEGER: metavalue detected, returning 0
+#    Time: 1232950 ns  Iteration: 2  Instance: /tb_processador/uut_processador/uut_XREGS
+# ** Warning: NUMERIC_STD.TO_INTEGER: metavalue detected, returning 0
+#    Time: 1232950 ns  Iteration: 2  Instance: /tb_processador/uut_processador/uut_XREGS
+# ** Warning: NUMERIC_STD.TO_INTEGER: metavalue detected, returning 0
+#    Time: 1232950 ns  Iteration: 2  Instance: /tb_processador/uut_processador/uut_XREGS
+# ** Warning: NUMERIC_STD.TO_INTEGER: metavalue detected, returning 0
+#    Time: 1642550 ns  Iteration: 2  Instance: /tb_processador/uut_processador/uut_XREGS
+# ** Warning: NUMERIC_STD.TO_INTEGER: metavalue detected, returning 0
+#    Time: 1642550 ns  Iteration: 2  Instance: /tb_processador/uut_processador/uut_XREGS
+# ** Warning: NUMERIC_STD.TO_INTEGER: metavalue detected, returning 0
+#    Time: 1642550 ns  Iteration: 2  Instance: /tb_processador/uut_processador/uut_XREGS
+# ** Warning: NUMERIC_STD.TO_INTEGER: metavalue detected, returning 0
+#    Time: 2052150 ns  Iteration: 2  Instance: /tb_processador/uut_processador/uut_XREGS
+# ** Warning: NUMERIC_STD.TO_INTEGER: metavalue detected, returning 0
+#    Time: 2052150 ns  Iteration: 2  Instance: /tb_processador/uut_processador/uut_XREGS
+# ** Warning: NUMERIC_STD.TO_INTEGER: metavalue detected, returning 0
+#    Time: 2052150 ns  Iteration: 2  Instance: /tb_processador/uut_processador/uut_XREGS
+# ** Warning: NUMERIC_STD.TO_INTEGER: metavalue detected, returning 0
+#    Time: 2461750 ns  Iteration: 2  Instance: /tb_processador/uut_processador/uut_XREGS
+# ** Warning: NUMERIC_STD.TO_INTEGER: metavalue detected, returning 0
+#    Time: 2461750 ns  Iteration: 2  Instance: /tb_processador/uut_processador/uut_XREGS
+# ** Warning: NUMERIC_STD.TO_INTEGER: metavalue detected, returning 0
+#    Time: 2461750 ns  Iteration: 2  Instance: /tb_processador/uut_processador/uut_XREGS
+# ** Warning: NUMERIC_STD.TO_INTEGER: metavalue detected, returning 0
+#    Time: 2871350 ns  Iteration: 2  Instance: /tb_processador/uut_processador/uut_XREGS
+# ** Warning: NUMERIC_STD.TO_INTEGER: metavalue detected, returning 0
+#    Time: 2871350 ns  Iteration: 2  Instance: /tb_processador/uut_processador/uut_XREGS
+# ** Warning: NUMERIC_STD.TO_INTEGER: metavalue detected, returning 0
+#    Time: 2871350 ns  Iteration: 2  Instance: /tb_processador/uut_processador/uut_XREGS
+# ** Warning: NUMERIC_STD.TO_INTEGER: metavalue detected, returning 0
+#    Time: 3280950 ns  Iteration: 2  Instance: /tb_processador/uut_processador/uut_XREGS
+# ** Warning: NUMERIC_STD.TO_INTEGER: metavalue detected, returning 0
+#    Time: 3280950 ns  Iteration: 2  Instance: /tb_processador/uut_processador/uut_XREGS
+# ** Warning: NUMERIC_STD.TO_INTEGER: metavalue detected, returning 0
+#    Time: 3280950 ns  Iteration: 2  Instance: /tb_processador/uut_processador/uut_XREGS
+# ** Warning: NUMERIC_STD.TO_INTEGER: metavalue detected, returning 0
+#    Time: 3690550 ns  Iteration: 2  Instance: /tb_processador/uut_processador/uut_XREGS
+# ** Warning: NUMERIC_STD.TO_INTEGER: metavalue detected, returning 0
+#    Time: 3690550 ns  Iteration: 2  Instance: /tb_processador/uut_processador/uut_XREGS
+# ** Warning: NUMERIC_STD.TO_INTEGER: metavalue detected, returning 0
+#    Time: 3690550 ns  Iteration: 2  Instance: /tb_processador/uut_processador/uut_XREGS
+# ** Warning: NUMERIC_STD.TO_INTEGER: metavalue detected, returning 0
+#    Time: 4100150 ns  Iteration: 2  Instance: /tb_processador/uut_processador/uut_XREGS
+# ** Warning: NUMERIC_STD.TO_INTEGER: metavalue detected, returning 0
+#    Time: 4100150 ns  Iteration: 2  Instance: /tb_processador/uut_processador/uut_XREGS
+# ** Warning: NUMERIC_STD.TO_INTEGER: metavalue detected, returning 0
+#    Time: 4100150 ns  Iteration: 2  Instance: /tb_processador/uut_processador/uut_XREGS
+# ** Warning: NUMERIC_STD.TO_INTEGER: metavalue detected, returning 0
+#    Time: 4509750 ns  Iteration: 2  Instance: /tb_processador/uut_processador/uut_XREGS
+# ** Warning: NUMERIC_STD.TO_INTEGER: metavalue detected, returning 0
+#    Time: 4509750 ns  Iteration: 2  Instance: /tb_processador/uut_processador/uut_XREGS
+# ** Warning: NUMERIC_STD.TO_INTEGER: metavalue detected, returning 0
+#    Time: 4509750 ns  Iteration: 2  Instance: /tb_processador/uut_processador/uut_XREGS
+# ** Warning: NUMERIC_STD.TO_INTEGER: metavalue detected, returning 0
+#    Time: 4919350 ns  Iteration: 2  Instance: /tb_processador/uut_processador/uut_XREGS
+# ** Warning: NUMERIC_STD.TO_INTEGER: metavalue detected, returning 0
+#    Time: 4919350 ns  Iteration: 2  Instance: /tb_processador/uut_processador/uut_XREGS
+# ** Warning: NUMERIC_STD.TO_INTEGER: metavalue detected, returning 0
+#    Time: 4919350 ns  Iteration: 2  Instance: /tb_processador/uut_processador/uut_XREGS
+# ** Warning: NUMERIC_STD.TO_INTEGER: metavalue detected, returning 0
+#    Time: 5328950 ns  Iteration: 2  Instance: /tb_processador/uut_processador/uut_XREGS
+# ** Warning: NUMERIC_STD.TO_INTEGER: metavalue detected, returning 0
+#    Time: 5328950 ns  Iteration: 2  Instance: /tb_processador/uut_processador/uut_XREGS
+# ** Warning: NUMERIC_STD.TO_INTEGER: metavalue detected, returning 0
+#    Time: 5328950 ns  Iteration: 2  Instance: /tb_processador/uut_processador/uut_XREGS
+# ** Warning: NUMERIC_STD.TO_INTEGER: metavalue detected, returning 0
+#    Time: 5738550 ns  Iteration: 2  Instance: /tb_processador/uut_processador/uut_XREGS
+# ** Warning: NUMERIC_STD.TO_INTEGER: metavalue detected, returning 0
+#    Time: 5738550 ns  Iteration: 2  Instance: /tb_processador/uut_processador/uut_XREGS
+# ** Warning: NUMERIC_STD.TO_INTEGER: metavalue detected, returning 0
+#    Time: 5738550 ns  Iteration: 2  Instance: /tb_processador/uut_processador/uut_XREGS
+# ** Warning: NUMERIC_STD.TO_INTEGER: metavalue detected, returning 0
+#    Time: 6148150 ns  Iteration: 2  Instance: /tb_processador/uut_processador/uut_XREGS
+# ** Warning: NUMERIC_STD.TO_INTEGER: metavalue detected, returning 0
+#    Time: 6148150 ns  Iteration: 2  Instance: /tb_processador/uut_processador/uut_XREGS
+# ** Warning: NUMERIC_STD.TO_INTEGER: metavalue detected, returning 0
+#    Time: 6148150 ns  Iteration: 2  Instance: /tb_processador/uut_processador/uut_XREGS
+# ** Warning: NUMERIC_STD.TO_INTEGER: metavalue detected, returning 0
+#    Time: 6557750 ns  Iteration: 2  Instance: /tb_processador/uut_processador/uut_XREGS
+# ** Warning: NUMERIC_STD.TO_INTEGER: metavalue detected, returning 0
+#    Time: 6557750 ns  Iteration: 2  Instance: /tb_processador/uut_processador/uut_XREGS
+# ** Warning: NUMERIC_STD.TO_INTEGER: metavalue detected, returning 0
+#    Time: 6557750 ns  Iteration: 2  Instance: /tb_processador/uut_processador/uut_XREGS
+# ** Warning: NUMERIC_STD.TO_INTEGER: metavalue detected, returning 0
+#    Time: 6967350 ns  Iteration: 2  Instance: /tb_processador/uut_processador/uut_XREGS
+# ** Warning: NUMERIC_STD.TO_INTEGER: metavalue detected, returning 0
+#    Time: 6967350 ns  Iteration: 2  Instance: /tb_processador/uut_processador/uut_XREGS
+# ** Warning: NUMERIC_STD.TO_INTEGER: metavalue detected, returning 0
+#    Time: 6967350 ns  Iteration: 2  Instance: /tb_processador/uut_processador/uut_XREGS
+# ** Warning: NUMERIC_STD.TO_INTEGER: metavalue detected, returning 0
+#    Time: 7376950 ns  Iteration: 2  Instance: /tb_processador/uut_processador/uut_XREGS
+# ** Warning: NUMERIC_STD.TO_INTEGER: metavalue detected, returning 0
+#    Time: 7376950 ns  Iteration: 2  Instance: /tb_processador/uut_processador/uut_XREGS
+# ** Warning: NUMERIC_STD.TO_INTEGER: metavalue detected, returning 0
+#    Time: 7376950 ns  Iteration: 2  Instance: /tb_processador/uut_processador/uut_XREGS
+# ** Warning: NUMERIC_STD.TO_INTEGER: metavalue detected, returning 0
+#    Time: 7786550 ns  Iteration: 2  Instance: /tb_processador/uut_processador/uut_XREGS
+# ** Warning: NUMERIC_STD.TO_INTEGER: metavalue detected, returning 0
+#    Time: 7786550 ns  Iteration: 2  Instance: /tb_processador/uut_processador/uut_XREGS
+# ** Warning: NUMERIC_STD.TO_INTEGER: metavalue detected, returning 0
+#    Time: 7786550 ns  Iteration: 2  Instance: /tb_processador/uut_processador/uut_XREGS
+# ** Warning: NUMERIC_STD.TO_INTEGER: metavalue detected, returning 0
+#    Time: 8196150 ns  Iteration: 2  Instance: /tb_processador/uut_processador/uut_XREGS
+# ** Warning: NUMERIC_STD.TO_INTEGER: metavalue detected, returning 0
+#    Time: 8196150 ns  Iteration: 2  Instance: /tb_processador/uut_processador/uut_XREGS
+# ** Warning: NUMERIC_STD.TO_INTEGER: metavalue detected, returning 0
+#    Time: 8196150 ns  Iteration: 2  Instance: /tb_processador/uut_processador/uut_XREGS
+# ** Warning: NUMERIC_STD.TO_INTEGER: metavalue detected, returning 0
+#    Time: 8605750 ns  Iteration: 2  Instance: /tb_processador/uut_processador/uut_XREGS
+# ** Warning: NUMERIC_STD.TO_INTEGER: metavalue detected, returning 0
+#    Time: 8605750 ns  Iteration: 2  Instance: /tb_processador/uut_processador/uut_XREGS
+# ** Warning: NUMERIC_STD.TO_INTEGER: metavalue detected, returning 0
+#    Time: 8605750 ns  Iteration: 2  Instance: /tb_processador/uut_processador/uut_XREGS
+# ** Warning: NUMERIC_STD.TO_INTEGER: metavalue detected, returning 0
+#    Time: 9015350 ns  Iteration: 2  Instance: /tb_processador/uut_processador/uut_XREGS
+# ** Warning: NUMERIC_STD.TO_INTEGER: metavalue detected, returning 0
+#    Time: 9015350 ns  Iteration: 2  Instance: /tb_processador/uut_processador/uut_XREGS
+# ** Warning: NUMERIC_STD.TO_INTEGER: metavalue detected, returning 0
+#    Time: 9015350 ns  Iteration: 2  Instance: /tb_processador/uut_processador/uut_XREGS
+# ** Warning: NUMERIC_STD.TO_INTEGER: metavalue detected, returning 0
+#    Time: 9424950 ns  Iteration: 2  Instance: /tb_processador/uut_processador/uut_XREGS
+# ** Warning: NUMERIC_STD.TO_INTEGER: metavalue detected, returning 0
+#    Time: 9424950 ns  Iteration: 2  Instance: /tb_processador/uut_processador/uut_XREGS
+# ** Warning: NUMERIC_STD.TO_INTEGER: metavalue detected, returning 0
+#    Time: 9424950 ns  Iteration: 2  Instance: /tb_processador/uut_processador/uut_XREGS
+# ** Warning: NUMERIC_STD.TO_INTEGER: metavalue detected, returning 0
+#    Time: 9834550 ns  Iteration: 2  Instance: /tb_processador/uut_processador/uut_XREGS
+# ** Warning: NUMERIC_STD.TO_INTEGER: metavalue detected, returning 0
+#    Time: 9834550 ns  Iteration: 2  Instance: /tb_processador/uut_processador/uut_XREGS
+# ** Warning: NUMERIC_STD.TO_INTEGER: metavalue detected, returning 0
+#    Time: 9834550 ns  Iteration: 2  Instance: /tb_processador/uut_processador/uut_XREGS
+# ** Warning: NUMERIC_STD.TO_INTEGER: metavalue detected, returning 0
+#    Time: 10244150 ns  Iteration: 2  Instance: /tb_processador/uut_processador/uut_XREGS
+# ** Warning: NUMERIC_STD.TO_INTEGER: metavalue detected, returning 0
+#    Time: 10244150 ns  Iteration: 2  Instance: /tb_processador/uut_processador/uut_XREGS
+# ** Warning: NUMERIC_STD.TO_INTEGER: metavalue detected, returning 0
+#    Time: 10244150 ns  Iteration: 2  Instance: /tb_processador/uut_processador/uut_XREGS
+# ** Warning: NUMERIC_STD.TO_INTEGER: metavalue detected, returning 0
+#    Time: 10653750 ns  Iteration: 2  Instance: /tb_processador/uut_processador/uut_XREGS
+# ** Warning: NUMERIC_STD.TO_INTEGER: metavalue detected, returning 0
+#    Time: 10653750 ns  Iteration: 2  Instance: /tb_processador/uut_processador/uut_XREGS
+# ** Warning: NUMERIC_STD.TO_INTEGER: metavalue detected, returning 0
+#    Time: 10653750 ns  Iteration: 2  Instance: /tb_processador/uut_processador/uut_XREGS
+# ** Warning: NUMERIC_STD.TO_INTEGER: metavalue detected, returning 0
+#    Time: 11063350 ns  Iteration: 2  Instance: /tb_processador/uut_processador/uut_XREGS
+# ** Warning: NUMERIC_STD.TO_INTEGER: metavalue detected, returning 0
+#    Time: 11063350 ns  Iteration: 2  Instance: /tb_processador/uut_processador/uut_XREGS
+# ** Warning: NUMERIC_STD.TO_INTEGER: metavalue detected, returning 0
+#    Time: 11063350 ns  Iteration: 2  Instance: /tb_processador/uut_processador/uut_XREGS
+# ** Warning: NUMERIC_STD.TO_INTEGER: metavalue detected, returning 0
+#    Time: 11472950 ns  Iteration: 2  Instance: /tb_processador/uut_processador/uut_XREGS
+# ** Warning: NUMERIC_STD.TO_INTEGER: metavalue detected, returning 0
+#    Time: 11472950 ns  Iteration: 2  Instance: /tb_processador/uut_processador/uut_XREGS
+# ** Warning: NUMERIC_STD.TO_INTEGER: metavalue detected, returning 0
+#    Time: 11472950 ns  Iteration: 2  Instance: /tb_processador/uut_processador/uut_XREGS
+# ** Warning: NUMERIC_STD.TO_INTEGER: metavalue detected, returning 0
+#    Time: 11882550 ns  Iteration: 2  Instance: /tb_processador/uut_processador/uut_XREGS
+# ** Warning: NUMERIC_STD.TO_INTEGER: metavalue detected, returning 0
+#    Time: 11882550 ns  Iteration: 2  Instance: /tb_processador/uut_processador/uut_XREGS
+# ** Warning: NUMERIC_STD.TO_INTEGER: metavalue detected, returning 0
+#    Time: 11882550 ns  Iteration: 2  Instance: /tb_processador/uut_processador/uut_XREGS
 # Break key hit
 # Simulation stop requested.
-# End time: 19:47:58 on Sep 17,2024, Elapsed time: 23:01:16
-# Errors: 0, Warnings: 3
+quit -sim
+# End time: 06:57:10 on Sep 20,2024, Elapsed time: 0:12:50
+# Errors: 0, Warnings: 95
