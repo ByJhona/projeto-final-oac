@@ -11,6 +11,7 @@ architecture behavior of CPU_tb is
     signal clk : std_logic := '0';
     signal cpu_in : std_logic_vector(31 downto 0) := (others => '0');
     signal cpu_out : std_logic_vector(31 downto 0);
+    signal opcode : std_logic_vector(6 downto 0);
 
     constant clk_period : time := 100 ns;
 
@@ -20,7 +21,8 @@ begin
         port map (
             cpu_clock => clk,
             cpu_in    => cpu_in,
-            cpu_out   => cpu_out
+            cpu_out   => cpu_out,
+            opcode    => opcode 
         );
 
     -- Clock generation process with limited cycles
@@ -53,16 +55,19 @@ begin
         cpu_in <= x"00000000";  
         wait for clk_period;  -- Wait for the next clock cycle
         report "mem_out value after first input: " & to_hstring(cpu_out);
+        report "opcode value after first input: " & to_string(opcode);
 
         -- Second input
         cpu_in <= x"00000001";  
         wait for clk_period;
         report "mem_out value after second input: " & to_hstring(cpu_out);
-        
+        report "opcode value after second input: " & to_string(opcode);
+
         -- Third input
         cpu_in <= x"00000002";  
         wait for clk_period;
         report "mem_out value after third input: " & to_hstring(cpu_out);
+        report "opcode value after third input: " & to_string(opcode);
 
         -- End simulation
         wait;

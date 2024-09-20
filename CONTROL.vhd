@@ -4,28 +4,30 @@ USE IEEE.NUMERIC_STD.ALL;
 LIBRARY work;
 USE work.RV32_pkg.ALL;
 
-ENTITY CONTROL IS
-	PORT (
-		clock : IN STD_LOGIC;
-		opcode : IN STD_LOGIC_VECTOR(6 DOWNTO 0) := (others => '0');
-		
-		EscrevePCCond : OUT STD_LOGIC := '0';
-		EscrevePC : OUT STD_LOGIC := '0';
-		IouD : OUT STD_LOGIC := '0';
-		EscreveMem : OUT STD_LOGIC := '0';
-		LeMem : OUT STD_LOGIC := '0';
-		EscreveIR : OUT STD_LOGIC := '0';
-		OrigPC : OUT STD_LOGIC := '0';
-		ALUOp : OUT STD_LOGIC_VECTOR(1 DOWNTO 0) := (others => '0');
-		OrigAULA : OUT STD_LOGIC_VECTOR(1 DOWNTO 0) := (others => '0');
-		OrigBULA : OUT STD_LOGIC_VECTOR(1 DOWNTO 0) := (others => '0');
-		EscrevePCB : OUT STD_LOGIC := '0';
-		EscreveReg : OUT STD_LOGIC := '0';
-		Mem2Reg : OUT STD_LOGIC_VECTOR(1 DOWNTO 0) := (others => '0')
-	);
-END CONTROL;
+entity CONTROL is
+	port (
 
-ARCHITECTURE arc_CONTROL OF CONTROL IS
+		clock : in std_logic;
+		opcode : in std_logic_vector(6 downto 0) := (others => '0');
+		
+		EscrevePCCond : out std_logic := '0';
+		EscrevePC     : out std_logic := '0';
+		IouD          : out std_logic := '0';
+		EscreveMem    : out std_logic := '0';
+		LeMem         : out std_logic := '0';
+		EscreveIR     : out std_logic := '0';
+		OrigPC        : out std_logic := '0';
+		EscrevePCB    : out std_logic := '0';
+		EscreveReg    : out std_logic := '0';
+		ALUOp         : out std_logic_vector(1 downto 0) := (others => '0');
+		OrigAULA      : out std_logic_vector(1 downto 0) := (others => '0');
+		OrigBULA      : out std_logic_vector(1 downto 0) := (others => '0');
+		Mem2Reg       : out std_logic_vector(1 downto 0) := (others => '0')
+
+	);
+end CONTROL;
+
+architecture behavior of CONTROL is
 	TYPE etapa_tipo IS (FETCH, DECODE, EXECUTE, MEMORYACCESS, WRITEBACK, UNDEFINED);
 	TYPE instrucao_tipo IS (TIPOR, LOAD, STORE, BRANCH, JUMP_JAL);
 	SIGNAL etapa_atual : etapa_tipo := FETCH;
@@ -79,7 +81,7 @@ BEGIN
 
 				WHEN EXECUTE =>
 
-					CASE instrucao IS -- Verifica o tipo da instru��o
+					CASE instrucao IS -- Verifica o tipo da instrucao
 						WHEN TIPOR =>
 							OrigAULA <= "01";
 							OrigBULA <= "00";
@@ -148,4 +150,4 @@ BEGIN
 			END CASE;
 		END IF;
 	END PROCESS;
-END arc_CONTROL;
+end behavior;

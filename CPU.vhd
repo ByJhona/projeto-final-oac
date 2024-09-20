@@ -6,9 +6,10 @@ entity CPU is
     port (
 
         cpu_clock : in std_logic := '0';
-        cpu_in  : in std_logic_vector(31 downto 0) := (others => '0');
+        cpu_in    : in std_logic_vector(31 downto 0) := (others => '0');
 
         cpu_out : out std_logic_vector(31 downto 0) := (others => '0');
+        opcode  : out std_logic_vector(6 downto 0) := (others => '0');
     );
 end CPU;
 
@@ -24,17 +25,18 @@ architecture behavior of CPU is
 
     -- Signals for MEM
     signal instruction_address : std_logic_vector(11 downto 0); 
-       
+    signal mem_out : std_logic_vector(31 downto 0);
+    
 begin
 
     -- PC Instance
     pc_inst: entity work.PC
-        port map (
-            clock  => cpu_clock,
-            enable => pc_enable,
-            pc_in  => cpu_in,
-            pc_out => mux_in_instruction
-        );
+    port map (
+        clock  => cpu_clock,
+        enable => pc_enable,
+        pc_in  => cpu_in,
+        pc_out => mux_in_instruction
+    );
 
     -- MUX_IouD Instance
     MUX_IouD_inst: entity work.MUX_IouD
@@ -55,7 +57,18 @@ begin
         re  => '1',
         address => instruction_address,
         data_in => x"00000000",
-        mem_out => cpu_out
+        mem_out => mem_out
     );
+
+    -- Reg_Instruction Instance
+    reg_instruction_inst: entity work.Reg_Instruction
+    port map (
+        clk  => cpu_clock,
+        write_instruction => '1',
+        reg_in  => mem_out,
+        reg_out => cpu_out
+    );
+
+    opcode <= std_logic_vector(cpu_out(6 downto 0));
 
 end architecture behavior;

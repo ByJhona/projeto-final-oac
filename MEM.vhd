@@ -50,7 +50,7 @@ BEGIN
     read_write : process (clock)
     begin
         -- Escrita
-        if (we = '1' and rising_edge(clock)) then
+        if (we = '1') then
             mem(to_integer(unsigned(address))) <= data_in;
 
         elsif (re = '1') then
