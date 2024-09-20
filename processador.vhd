@@ -3,7 +3,13 @@ USE ieee.std_logic_1164.ALL;
 USE ieee.numeric_std.ALL;
 ENTITY processador IS
         PORT (
-                clock : IN STD_LOGIC := '0'
+                clock : IN STD_LOGIC := '0';
+                mem_out : OUT STD_LOGIC_VECTOR(31 DOWNTO 0);
+                opcode_out : OUT STD_LOGIC_VECTOR(6 DOWNTO 0);
+                reg_out1 : OUT STD_LOGIC_VECTOR(31 DOWNTO 0);
+                reg_out2 : OUT STD_LOGIC_VECTOR(31 DOWNTO 0);
+                imm_out : OUT STD_LOGIC_VECTOR(31 DOWNTO 0);
+                ula_out : OUT STD_LOGIC_VECTOR(31 DOWNTO 0);
         );
 
 END processador;
@@ -20,10 +26,10 @@ ARCHITECTURE behavior OF processador IS
 
         COMPONENT MUX01
                 PORT (
-                        selecao : STD_LOGIC := '0';
-                        A : STD_LOGIC_VECTOR(31 DOWNTO 0) := (OTHERS => '0');
-                        B : STD_LOGIC_VECTOR(31 DOWNTO 0) := (OTHERS => '0');
-                        saida : STD_LOGIC_VECTOR(31 DOWNTO 0) := (OTHERS => '0'));
+                        selecao : IN STD_LOGIC := '0';
+                        A : IN STD_LOGIC_VECTOR(31 DOWNTO 0) := (OTHERS => '0');
+                        B : IN STD_LOGIC_VECTOR(31 DOWNTO 0) := (OTHERS => '0');
+                        saida : OUT STD_LOGIC_VECTOR(31 DOWNTO 0) := (OTHERS => '0'));
         END COMPONENT;
 
         COMPONENT CONTROL
@@ -209,6 +215,7 @@ BEGIN
 
         funct7 <= saida_REG_INSTRUCTION_IMM(31 DOWNTO 25);
         funct3 <= saida_REG_INSTRUCTION_IMM(14 DOWNTO 12);
+
         uut_ULA : ULA PORT MAP(
                 ALUOp,
                 funct3,
@@ -218,6 +225,8 @@ BEGIN
                 saida_Z_ULA,
                 zero
         );
+
+        ula_out <= saida_Z_ULA;
 
         uut_PC : PC PORT MAP(
                 clock,
@@ -243,10 +252,14 @@ BEGIN
                 saida_MEM
         );
 
+        mem_out <= saida_MEM;
+
         uut_GENIMM32 : GENIMM32 PORT MAP(-- Editar para outras instrucoes
                 saida_REG_INSTRUCTION_IMM,
                 saida_gerador_imm
         );
+
+        imm_out <= saida_gerador_imm;
 
         uut_CONTROL : CONTROL PORT MAP(
                 clock,
@@ -278,6 +291,8 @@ BEGIN
                 controle_ULA -- rever
         );
 
+        opcode_out <= opcode;
+
         uut_XREGS : XREGS PORT MAP(
                 clock,
                 EscreveReg,
@@ -288,6 +303,9 @@ BEGIN
                 saida_A_XREGS,
                 saida_B_XREGS
         );
+
+        reg_out1 <= saida_A_XREGS;
+        reg_out2 <= saida_B_XREGS;
 
         uut_ULA_A : ULA_A PORT MAP(
                 clock,
@@ -305,6 +323,7 @@ BEGIN
                 saida_PC,
                 saida_PCBack
         );
+
         address <= saida_Z_ULA;
 
         uut_MUX_AULA : MUX_AULA PORT MAP(
