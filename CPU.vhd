@@ -51,6 +51,9 @@ architecture behavior of CPU is
     signal rd        : std_logic_vector(4 downto 0) := (others => '0');
     signal immediate : std_logic_vector(31 downto 0) := (others => '0');
 
+    -- Signals for PCback
+    signal pcback_out : std_logic_vector(31 downto 0);
+
     -- Signals for MUX_AULA
 	signal RegA         : std_logic_vector(31 downto 0) := (others => '0');  
     signal PCback       : std_logic_vector(31 downto 0);                       
@@ -145,12 +148,21 @@ begin
     OrigAULA_p <= OrigAULA;
     OrigBULA_p <= OrigBULA;
 
+    -- PCback Instance
+    pcback_inst: entity work.PCback
+    port map (
+		clk       => cpu_clock, 
+        we        => EscrevePCB, 
+        pcback_in => pc_out, 
+        pcback_out => pcback_out       
+    );
+
     -- MUX_AULA Instance
     mux_aula_inst: entity work.MUX_AULA
     port map (
 		RegA     => RegA,  
         PC       => pc_out,
-        PCback   => pc_out,    
+        PCback   => pcback_out,    
         OrigAULA => OrigAULA,                       
         ULA_A    => mux_aula_out       
     );
