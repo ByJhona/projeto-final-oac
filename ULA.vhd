@@ -73,6 +73,7 @@ begin
 
     MAIN : PROCESS (A, B, operation) IS
     BEGIN
+    
         cond <= '0';  -- Default condition output
 
         case operation is
@@ -94,37 +95,49 @@ begin
                 Z <= std_logic_vector(shift_right(signed(A), to_integer(unsigned(B(4 downto 0)))));
             when SLT_oper =>
                 if signed(A) < signed(B) then
-                    Z <= (others => '1');
+                    Z <= (others => '0');  
+                    Z(0) <= '1'; 
+                    cond <= '1';
                 else
                     Z <= (others => '0');
                 end if;
             when SLTU_oper =>
                 if unsigned(A) < unsigned(B) then
-                    Z <= (others => '1');
+                    Z <= (others => '0');  
+                    Z(0) <= '1'; 
+                    cond <= '1';
                 else
                     Z <= (others => '0');
                 end if;
             when SGE_oper =>
                 if signed(A) >= signed(B) then
-                    Z <= (others => '1');
+                    Z <= (others => '0');  
+                    Z(0) <= '1'; 
+                    cond <= '1';
                 else
                     Z <= (others => '0');
                 end if;
             when SGEU_oper =>
                 if unsigned(A) >= unsigned(B) then
-                    Z <= (others => '1');
+                    Z <= (others => '0');  
+                    Z(0) <= '1'; 
+                    cond <= '1';
                 else
                     Z <= (others => '0');
                 end if;
             when SEQ_oper =>
                 if A = B then
-                    Z <= (others => '1');
+                    Z <= (others => '0');  
+                    Z(0) <= '1'; 
+                    cond <= '1';
                 else
                     Z <= (others => '0');
                 end if;
             when SNE_oper =>
                 if A /= B then
-                    Z <= (others => '1');
+                    Z <= (others => '0');  
+                    Z(0) <= '1';
+                    cond <= '1';
                 else
                     Z <= (others => '0');
                 end if;

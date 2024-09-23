@@ -4,14 +4,14 @@ USE IEEE.NUMERIC_STD.ALL;
 
 ENTITY MUX_AULA IS
 	PORT (
-        -- Entradas
+
 		RegA         : in std_logic_vector(31 downto 0);  
         PCback       : in std_logic_vector(31 downto 0);  
         PC           : in std_logic_vector(31 downto 0); 
         OrigAULA     : in std_logic_vector(1 downto 0); 
-
-       -- Saída                      
+                     
         ULA_A        : out std_logic_vector(31 downto 0)  
+        
 	);
 END MUX_AULA;
 

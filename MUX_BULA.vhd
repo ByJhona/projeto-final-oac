@@ -4,13 +4,13 @@ use ieee.numeric_std.all;
 
 entity MUX_BULA is
     port (
-        -- Entradas
+
         RegB      : in std_logic_vector(31 downto 0);  
         Imediato  : in std_logic_vector(31 downto 0);  
         OrigBULA  : in std_logic_vector(1 downto 0);   
 
-        -- Saída
         ULA_B     : out std_logic_vector(31 downto 0)  
+        
     );
 end MUX_BULA;
 

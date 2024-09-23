@@ -52,23 +52,14 @@ begin
         -- Initialize with some inputs and wait for the clock to stabilize
         wait for 50 ns;
         
-        -- First input
-        cpu_in <= x"00000000";  
         wait for clk_period;  -- Wait for the next clock cycle
         report "mem_out value after first input: " & to_hstring(cpu_out);
-        report "opcode value after first input: " & to_string(opcode);
-
-        -- Second input
-        cpu_in <= x"00000001";  
+     
         wait for clk_period;
         report "mem_out value after second input: " & to_hstring(cpu_out);
-        report "opcode value after second input: " & to_string(opcode);
-
-        -- Third input
-        cpu_in <= x"00000002";  
+ 
         wait for clk_period;
         report "mem_out value after third input: " & to_hstring(cpu_out);
-        report "opcode value after third input: " & to_string(opcode);
 
         -- End simulation
         wait;

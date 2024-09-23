@@ -46,15 +46,15 @@ architecture behavior of CPU is
     signal rd        : std_logic_vector(4 downto 0) := (others => '0');
     signal immediate : std_logic_vector(31 downto 0) := (others => '0');
 
+    -- Signals for MUX_AULA
+	signal RegA         : std_logic_vector(31 downto 0) := (others => '0');  
+    signal PCback       : std_logic_vector(31 downto 0);                       
+    signal mux_aula_out : std_logic_vector(31 downto 0);
+
     -- Signals for MUX_BULA
     signal RegB         : std_logic_vector(31 downto 0) := (others => '0');  
     signal Imediato     : std_logic_vector(31 downto 0) := (others => '0');     
     signal mux_bula_out : std_logic_vector(31 downto 0) := (others => '0');
-
-    -- Signals for MUX_AULA
-	signal RegA         : std_logic_vector(31 downto 0);  
-    signal PCback       : std_logic_vector(31 downto 0);                       
-    signal mux_aula_out : std_logic_vector(31 downto 0);
 
     -- Signals for ULA
     signal funct3   : std_logic_vector(2 downto 0);
@@ -62,9 +62,12 @@ architecture behavior of CPU is
     signal ula_out  : std_logic_vector(31 downto 0);
     signal cond     : std_logic;
 
+    -- Signals for MUX_OrigPC
+    signal mux_origpc_out : std_logic_vector(31 downto 0) := (others => '0');
+
 begin
 
-    pc_enable <= (EscrevePC) OR (EscrevePCCond);
+    pc_enable <= (EscrevePC) OR (EscrevePCCond AND cond);
     
     -- CONTROL Instance
     control_inst: entity work.CONTROL
@@ -91,7 +94,7 @@ begin
     port map (
         clock  => cpu_clock,
         enable => pc_enable,
-        pc_in  => cpu_in,
+        pc_in  => mux_origpc_out,
         pc_out => mux_in_instruction
     );
 
@@ -104,7 +107,7 @@ begin
         mux_out     => mux_ioud_out
     );
 
-    instruction_address <= std_logic_vector(mux_ioud_out(11 downto 0)); 
+    instruction_address <= std_logic_vector(mux_ioud_out(13 downto 2)); 
 
     -- MEM Instance
     MEM_inst: entity work.MEM
@@ -134,8 +137,8 @@ begin
     mux_aula_inst: entity work.MUX_AULA
     port map (
 		RegA     => RegA,  
-        PC       => mem_out,
-        PCback   => mem_out,    
+        PC       => mux_in_instruction,
+        PCback   => mux_in_instruction,    
         OrigAULA => OrigAULA,                       
         ULA_A    => mux_aula_out       
     );
@@ -143,7 +146,7 @@ begin
     -- MUX_BULA Instance
     mux_bula_inst: entity work.MUX_BULA
     port map (
-        RegB     => x"00000000",
+        RegB     => RegB,
         Imediato => immediate,
         OrigBULA => OrigBULA,   
         ULA_B    => mux_bula_out
@@ -159,6 +162,15 @@ begin
         B      => mux_bula_out,
         Z      => ula_out,
         cond   => cond
+    );
+
+    -- MUX_OrigPC Instance
+    mux_origpc_inst: entity work.MUX_OrigPC
+    port map (
+        A => ula_out, 
+		B => ula_out, -- apenas para fins de teste (o correto seria a saida de "saida_ula")
+		OrigPC => OrigPC,
+		mux_origpc_out => mux_origpc_out
     );
 
 end architecture behavior;

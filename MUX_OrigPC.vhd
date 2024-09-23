@@ -4,13 +4,13 @@ USE IEEE.NUMERIC_STD.ALL;
 
 ENTITY MUX_OrigPC IS
 	PORT (
-		-- Entradas
+		
 		A : IN STD_LOGIC_VECTOR(31 DOWNTO 0);
 		B : IN STD_LOGIC_VECTOR(31 DOWNTO 0);
 		OrigPC : IN STD_LOGIC;
 
-		-- Saída
-		saida : OUT STD_LOGIC_VECTOR(31 DOWNTO 0)
+		mux_origpc_out : OUT STD_LOGIC_VECTOR(31 DOWNTO 0)
+
 	);
 END MUX_OrigPC;
 
@@ -20,11 +20,11 @@ BEGIN
 	BEGIN
 		CASE OrigPC IS
 
-			WHEN '0' => saida <= A;
+			WHEN '0' => mux_origpc_out <= A;
 
-			WHEN '1' => saida <= B;
+			WHEN '1' => mux_origpc_out <= B;
 
-			WHEN OTHERS => saida <= x"00000000";
+			WHEN OTHERS => mux_origpc_out <= x"00000000";
 
 		END CASE;
 	END PROCESS;
