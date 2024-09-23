@@ -16,7 +16,6 @@ architecture behavior of CPU_tb is
     signal OrigBULA_p : std_logic_vector(1 downto 0);
     signal OrigPC_p   : std_logic;
 
-
     constant clk_period : time := 100 ns;
 
 begin
@@ -34,7 +33,7 @@ begin
 
     -- Clock generation process with limited cycles
     clk_process : process
-        constant num_cycles : integer := 10;  -- Number of clock cycles you want to run
+        constant num_cycles : integer := 100;  -- Number of clock cycles you want to run
         variable cycle_count : integer := 0;  -- Internal counter
     begin
         
