@@ -27,7 +27,7 @@ BEGIN
 
             when "10" => ULA_A <= PC;
 
-            when others => ULA_A <= null;
+            when others => ULA_A <= PC;     -- para fins de teste
                       
         end case;
     end process;

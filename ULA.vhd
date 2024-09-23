@@ -23,18 +23,7 @@ begin
     begin
         case ALUOp is
             when "00" =>  
-                case funct3 is
-                    when "000" =>
-                        if funct7 = "0000000" then
-                            operation <= ADD_oper;  -- ADD
-                        elsif funct7 = "0100000" then
-                            operation <= SUB_oper;  -- SUB
-                        else
-                            operation <= UNDEFINED;
-                        end if;
-                    when others =>
-                        operation <= UNDEFINED;
-                end case;
+                operation <= ADD_oper;  -- ADD
 
             when "01" =>  
                 case funct3 is
@@ -144,6 +133,6 @@ begin
             when others =>
                 Z <= (others => '0');  
         end case;
-    END PROCESS;
+    end process;
 
 end behavior;

@@ -9,9 +9,13 @@ end entity CPU_tb;
 architecture behavior of CPU_tb is
 
     signal clk : std_logic := '0';
-    signal cpu_in : std_logic_vector(31 downto 0) := (others => '0');
-    signal cpu_out : std_logic_vector(31 downto 0);
-    signal opcode : std_logic_vector(6 downto 0);
+    signal instruction_p : std_logic_vector(31 downto 0) := (others => '0');
+    signal instruction_address_p : std_logic_vector(31 downto 0) := (others => '0');
+    signal ula_out_p  : std_logic_vector(31 downto 0) := (others => '0');
+    signal OrigAULA_p : std_logic_vector(1 downto 0);
+    signal OrigBULA_p : std_logic_vector(1 downto 0);
+    signal OrigPC_p   : std_logic;
+
 
     constant clk_period : time := 100 ns;
 
@@ -20,9 +24,12 @@ begin
     uut: entity work.CPU
         port map (
             cpu_clock => clk,
-            cpu_in    => cpu_in,
-            cpu_out   => cpu_out,
-            opcode    => opcode 
+            instruction_p => instruction_p,
+            instruction_address_p => instruction_address_p,
+            ula_out_p => ula_out_p,
+            OrigAULA_p => OrigAULA_p,
+            OrigBULA_p => OrigBULA_p,
+            OrigPC_p => OrigPC_p
         );
 
     -- Clock generation process with limited cycles
@@ -37,7 +44,6 @@ begin
             clk <= '1';
             wait for clk_period / 2;
 
-            -- Increment the counter at each rising edge
             cycle_count := cycle_count + 1;
         end loop;
 
@@ -49,19 +55,16 @@ begin
     -- Stimulus process
     stim_proc : process
     begin
-        -- Initialize with some inputs and wait for the clock to stabilize
-        wait for 50 ns;
-        
-        wait for clk_period;  -- Wait for the next clock cycle
-        report "mem_out value after first input: " & to_hstring(cpu_out);
-     
-        wait for clk_period;
-        report "mem_out value after second input: " & to_hstring(cpu_out);
- 
-        wait for clk_period;
-        report "mem_out value after third input: " & to_hstring(cpu_out);
-
-        -- End simulation
+        FOR i IN 0 TO 150 LOOP
+            report "---------------------------------------";
+            report "instruction_address: " & to_hstring(instruction_address_p);
+            report "instrcution: " & to_hstring(instruction_p);
+            report "ula out: " & to_hstring(ula_out_p);
+            report "orig aula: " & to_string(OrigAULA_p);
+            report "orig bula: " & to_string(OrigBULA_p);
+            report "orig pc: " & to_string(OrigPC_p);
+            wait for clk_period;
+        END LOOP;
         wait;
     end process;
 

@@ -5,9 +5,14 @@ use ieee.numeric_std.all;
 entity CPU is
     port (
 
-        cpu_clock : in std_logic := '0';
-        cpu_in    : in std_logic_vector(31 downto 0) := (others => '0');
-        cpu_out : out std_logic_vector(31 downto 0) := (others => '0');
+        cpu_clock   : in std_logic := '0';
+        instruction_p : out std_logic_vector(31 downto 0) := (others => '0');
+        instruction_address_p : out std_logic_vector(31 downto 0) := (others => '0');
+        ula_out_p : out std_logic_vector(31 downto 0) := (others => '0');
+        OrigAULA_p: out std_logic_vector(1 downto 0);
+        OrigBULA_p   : out std_logic_vector(1 downto 0);
+        OrigPC_p   : out std_logic;
+
     );
 end CPU;
 
@@ -89,6 +94,8 @@ begin
 		Mem2Reg       => Mem2Reg
     );
 
+    OrigPC_p <= OrigPC;
+
     -- PC Instance
     pc_inst: entity work.PC
     port map (
@@ -120,6 +127,8 @@ begin
         mem_out => mem_out
     );
 
+    instruction_p <= mem_out;
+
     -- Reg_Instruction Instance
     reg_instruction_inst: entity work.Reg_Instruction
     port map (
@@ -132,6 +141,9 @@ begin
         rd => rd,
         immediate => immediate
     );
+
+    OrigAULA_p <= OrigAULA;
+    OrigBULA_p <= OrigBULA;
 
     -- MUX_AULA Instance
     mux_aula_inst: entity work.MUX_AULA
@@ -164,6 +176,8 @@ begin
         cond   => cond
     );
 
+    ula_out_p <= ula_out;
+
     -- MUX_OrigPC Instance
     mux_origpc_inst: entity work.MUX_OrigPC
     port map (
@@ -172,5 +186,7 @@ begin
 		OrigPC => OrigPC,
 		mux_origpc_out => mux_origpc_out
     );
+
+    instruction_address_p <= mux_origpc_out;
 
 end architecture behavior;

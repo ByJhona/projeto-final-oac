@@ -31,7 +31,7 @@ architecture behavior of CONTROL is
 	type state is (FETCH, DECODE, EXECUTE, MEMORYACCESS, WRITEBACK);
     type instruction_type_t is (RTYPE, LOAD, STORE, BEQ, JAL);
     signal current_state : state := FETCH;
-    signal next_state : state;
+    signal next_state : state := FETCH;
     signal instruction_type : instruction_type_t; 
 begin
 
