@@ -78,9 +78,12 @@ begin
 						next_state <= MEMORYACCESS;
 					when BEQ | JAL =>
 						next_state <= FETCH;
+					when others =>
+						next_state <= FETCH;
 
 				end case;
 			when MEMORYACCESS =>
+			
 				case instruction_type is
 
 					when LOAD =>
@@ -117,6 +120,7 @@ begin
 				OrigAULA <= "00";
 				OrigBULA <= "11";
 				ALUOp    <= "00";
+				EscrevePC <= '0';
 
 			when EXECUTE =>
 
