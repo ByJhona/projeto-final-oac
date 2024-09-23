@@ -176,6 +176,9 @@ begin
         ULA_B    => mux_bula_out
     );
 
+    funct7 <= immediate(31 DOWNTO 25);
+    funct3 <= immediate(14 DOWNTO 12);
+
     -- ULA Instance
     ula_inst: entity work.ULA
     port map (
