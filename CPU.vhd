@@ -37,7 +37,7 @@ architecture behavior of CPU is
     signal pc_enable : std_logic; 
 
     -- Signals for MUX_IouD
-    signal mux_in_instruction : std_logic_vector(31 downto 0);
+    signal pc_out : std_logic_vector(31 downto 0);
     signal mux_ioud_out       : std_logic_vector(31 downto 0);  
 
     -- Signals for MEM
@@ -102,14 +102,14 @@ begin
         clock  => cpu_clock,
         enable => pc_enable,
         pc_in  => mux_origpc_out,
-        pc_out => mux_in_instruction
+        pc_out => pc_out
     );
 
     -- MUX_IouD Instance
     MUX_IouD_inst: entity work.MUX_IouD
     port map (
         IouD_signal => IouD,
-        instruction => mux_in_instruction,
+        instruc_addr => pc_out,
         data        => x"00000000",
         mux_out     => mux_ioud_out
     );
@@ -149,8 +149,8 @@ begin
     mux_aula_inst: entity work.MUX_AULA
     port map (
 		RegA     => RegA,  
-        PC       => mux_in_instruction,
-        PCback   => mux_in_instruction,    
+        PC       => pc_out,
+        PCback   => pc_out,    
         OrigAULA => OrigAULA,                       
         ULA_A    => mux_aula_out       
     );
