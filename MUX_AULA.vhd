@@ -7,7 +7,8 @@ ENTITY MUX_AULA IS
         -- Entradas
 		RegA         : in std_logic_vector(31 downto 0);  
         PCback       : in std_logic_vector(31 downto 0);  
-        OrigAULA     : in std_logic; 
+        PC           : in std_logic_vector(31 downto 0); 
+        OrigAULA     : in std_logic_vector(1 downto 0); 
 
        -- Saída                      
         ULA_A        : out std_logic_vector(31 downto 0)  
@@ -16,13 +17,17 @@ END MUX_AULA;
 
 ARCHITECTURE behavior OF MUX_AULA IS
 BEGIN
-    process (OrigAULA, Saida_ULA, Dado_Mem, Endereco_Instrucao)
+    process (OrigAULA)
     begin
         case OrigAULA is
 
-            when "0" => ULA_A <= PCback;
+            when "00" => ULA_A <= PCback;
                 
-            when "1" => ULA_A <= RegA;
+            when "01" => ULA_A <= RegA;
+
+            when "10" => ULA_A <= PC;
+
+            when others => ULA_A <= null;
                       
         end case;
     end process;

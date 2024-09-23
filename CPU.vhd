@@ -7,9 +7,7 @@ entity CPU is
 
         cpu_clock : in std_logic := '0';
         cpu_in    : in std_logic_vector(31 downto 0) := (others => '0');
-
         cpu_out : out std_logic_vector(31 downto 0) := (others => '0');
-        opcode  : out std_logic_vector(6 downto 0) := (others => '0');
     );
 end CPU;
 
@@ -31,7 +29,7 @@ architecture behavior of CPU is
     signal Mem2Reg       :  std_logic_vector(1 downto 0);
         
     -- Signals for PC
-    signal pc_enable : std_logic := '1'; 
+    signal pc_enable : std_logic; 
 
     -- Signals for MUX_IouD
     signal mux_in_instruction : std_logic_vector(31 downto 0);
@@ -40,12 +38,35 @@ architecture behavior of CPU is
     -- Signals for MEM
     signal instruction_address : std_logic_vector(11 downto 0); 
     signal mem_out             : std_logic_vector(31 downto 0);
-    
+
+    -- Signals for Reg Instruction
+    signal opcode    : std_logic_vector(6 downto 0) := (others => '0');
+    signal rs1       : std_logic_vector(4 downto 0) := (others => '0');
+    signal rs2       : std_logic_vector(4 downto 0) := (others => '0');
+    signal rd        : std_logic_vector(4 downto 0) := (others => '0');
+    signal immediate : std_logic_vector(31 downto 0) := (others => '0');
+
+    -- Signals for MUX_BULA
+    signal RegB         : std_logic_vector(31 downto 0) := (others => '0');  
+    signal Imediato     : std_logic_vector(31 downto 0) := (others => '0');     
+    signal mux_bula_out : std_logic_vector(31 downto 0) := (others => '0');
+
+    -- Signals for MUX_AULA
+	signal RegA         : std_logic_vector(31 downto 0);  
+    signal PCback       : std_logic_vector(31 downto 0);                       
+    signal mux_aula_out : std_logic_vector(31 downto 0);
+
+    -- Signals for ULA
+    signal funct3   : std_logic_vector(2 downto 0);
+    signal funct7   : std_logic_vector(6 downto 0);
+    signal ula_out  : std_logic_vector(31 downto 0);
+    signal cond     : std_logic;
+
 begin
 
-    -- colocar aqui depois a logica de pc cond ou escreve pc...
-
-    -- PC Instance
+    pc_enable <= (EscrevePC) OR (EscrevePCCond);
+    
+    -- CONTROL Instance
     control_inst: entity work.CONTROL
     port map (
         clock         => cpu_clock,
@@ -69,7 +90,7 @@ begin
     pc_inst: entity work.PC
     port map (
         clock  => cpu_clock,
-        enable => EscrevePC,
+        enable => pc_enable,
         pc_in  => cpu_in,
         pc_out => mux_in_instruction
     );
@@ -99,12 +120,45 @@ begin
     -- Reg_Instruction Instance
     reg_instruction_inst: entity work.Reg_Instruction
     port map (
-        clk               => cpu_clock,
-        write_instruction => EscreveIR,
-        reg_in            => mem_out,
-        reg_out           => cpu_out
+        clock     => cpu_clock,
+        EscreveIR => EscreveIR,
+        instruction_in => mem_out,
+        opcode => opcode,
+        rs1 => rs1,
+        rs2 => rs2,
+        rd => rd,
+        immediate => immediate
     );
 
-    opcode <= std_logic_vector(cpu_out(6 downto 0));
+    -- MUX_AULA Instance
+    mux_aula_inst: entity work.MUX_AULA
+    port map (
+		RegA     => RegA,  
+        PC       => mem_out,
+        PCback   => mem_out,    
+        OrigAULA => OrigAULA,                       
+        ULA_A    => mux_aula_out       
+    );
+
+    -- MUX_BULA Instance
+    mux_bula_inst: entity work.MUX_BULA
+    port map (
+        RegB     => x"00000000",
+        Imediato => immediate,
+        OrigBULA => OrigBULA,   
+        ULA_B    => mux_bula_out
+    );
+
+    -- ULA Instance
+    ula_inst: entity work.ULA
+    port map (
+        ALUOp  => ALUOp,
+        funct3 => funct3,
+        funct7 => funct7,
+        A      => mux_aula_out,
+        B      => mux_bula_out,
+        Z      => ula_out,
+        cond   => cond
+    );
 
 end architecture behavior;

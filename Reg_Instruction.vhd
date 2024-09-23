@@ -1,33 +1,34 @@
-library ieee;
-use ieee.std_logic_1164.all;
-use ieee.numeric_std.all;
+LIBRARY IEEE;
+USE IEEE.std_logic_1164.ALL;
+USE IEEE.NUMERIC_STD.ALL;
 
 entity Reg_Instruction is
     port (
-
-        clk                 : in std_logic;
-        write_instruction   : in std_logic;  
-        reg_in        : in std_logic_vector(31 downto 0);  
-
-        reg_out       : out std_logic_vector(31 downto 0) 
+        clock : in std_logic;
+        EscreveIR : in std_logic;
+        instruction_in : in std_logic_vector(31 downto 0) := (others => '0');
+        opcode : out std_logic_vector(6 downto 0) := (others => '0');
+        rs1 : out std_logic_vector(4 downto 0) := (others => '0');
+        rs2 : out std_logic_vector(4 downto 0) := (others => '0');
+        rd : out std_logic_vector(4 downto 0) := (others => '0');
+        immediate : out std_logic_vector(31 downto 0) := (others => '0');
     );
-end entity Reg_Instruction;
+end Reg_Instruction;
 
 architecture behavior of Reg_Instruction is
-    signal instruc_reg : std_logic_vector(31 downto 0) := (others => '0');  
+    signal current_instruction : std_logic_vector(31 DOWNTO 0) := (OTHERS => '0');
 begin
-    
-    process (clk)
+
+    DECODE_INSTRCUTION : process (clock)
     begin
-       
-        if rising_edge(clk) then
-            if write_instruction = '1' then
-                instruc_reg <= reg_in; 
-            end if;
+        if (rising_edge(clock) AND EscreveIR = '1') then
+            current_instruction <= instruction_in;
         end if;
-        
     end process;
 
-    reg_out <= instruc_reg;
-
-end architecture behavior;
+    opcode <= current_instruction(6 DOWNTO 0);
+    rs1 <= current_instruction(19 DOWNTO 15);
+    rs2 <= current_instruction(24 DOWNTO 20);
+    rd <= current_instruction(11 DOWNTO 7);
+ 
+end behavior;
