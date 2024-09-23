@@ -2,7 +2,7 @@ LIBRARY IEEE;
 USE IEEE.std_logic_1164.ALL;
 USE IEEE.NUMERIC_STD.ALL;
 LIBRARY work;
-USE work.RV32_pkg.ALL;
+
 
 entity CONTROL is
 	port (
@@ -29,9 +29,10 @@ end CONTROL;
 
 architecture behavior of CONTROL is
 	type state is (FETCH, DECODE, EXECUTE, MEMORYACCESS, WRITEBACK);
-	type instruction_type is (RTYPE, LOAD, STORE, BEQ, JAL);
-	signal current_state : state := FETCH;
-	signal next_state : state;
+    type instruction_type_t is (RTYPE, LOAD, STORE, BEQ, JAL);
+    signal current_state : state := FETCH;
+    signal next_state : state;
+    signal instruction_type : instruction_type_t; 
 begin
 
 	DEFINE_SEQUENCER : process (clock)
@@ -73,19 +74,19 @@ begin
 			when EXECUTE =>
 				case instruction_type is
 
-					when LOAD | STORE | RTYPE
+					when LOAD | STORE | RTYPE =>
 						next_state <= MEMORYACCESS;
-					when BEQ | JAL
+					when BEQ | JAL =>
 						next_state <= FETCH;
 
 				end case;
 			when MEMORYACCESS =>
 				case instruction_type is
 
-					when LOAD
+					when LOAD =>
 						next_state <= WRITEBACK;
 
-					when others
+					when others =>
 						next_state <= FETCH;
 
 				end case;

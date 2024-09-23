@@ -62,7 +62,7 @@ begin
 		ALUOp         => ALUOp,
 		OrigAULA      => OrigAULA,
 		OrigBULA      => OrigBULA,
-		Mem2Reg       => Mem2Reg,
+		Mem2Reg       => Mem2Reg
     );
 
     -- PC Instance
