@@ -33,7 +33,7 @@ begin
 
     -- Clock generation process with limited cycles
     clk_process : process
-        constant num_cycles : integer := 100;  -- Number of clock cycles you want to run
+        constant num_cycles : integer := 400;  -- Number of clock cycles you want to run
         variable cycle_count : integer := 0;  -- Internal counter
     begin
         

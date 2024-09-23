@@ -1,17 +1,22 @@
 library IEEE;
 use IEEE.STD_LOGIC_1164.ALL;
-use IEEE.NUMERIC_STD.ALL;  -- Use the correct library
+use IEEE.NUMERIC_STD.ALL;  
 
 entity Reg_File is
   generic (WSIZE : natural := 32);
-  port (
+    port (
 
-    clk, wren     : in std_logic;
-    rs1, rs2, rd  : in std_logic_vector(4 downto 0);
-    data          : in std_logic_vector(WSIZE-1 downto 0);
-    
-    ro1, ro2      : out std_logic_vector(WSIZE-1 downto 0)
-  );
+      clk  : in std_logic;
+      wren : in std_logic;
+      rs1  : in std_logic_vector(4 downto 0);
+      rs2  : in std_logic_vector(4 downto 0);
+      rd   : in std_logic_vector(4 downto 0);
+      data : in std_logic_vector(WSIZE-1 downto 0);
+      
+      ro1  : out std_logic_vector(WSIZE-1 downto 0);
+      ro2  : out std_logic_vector(WSIZE-1 downto 0)
+
+    );
 end Reg_File;
 
 architecture behavior of Reg_File is
@@ -30,4 +35,4 @@ begin
   ro1 <= reg_file(to_integer(unsigned(rs1)));
   ro2 <= reg_file(to_integer(unsigned(rs2)));
 
-end Behavioral;
+end behavior;

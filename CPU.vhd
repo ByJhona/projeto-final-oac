@@ -51,6 +51,10 @@ architecture behavior of CPU is
     signal rd        : std_logic_vector(4 downto 0) := (others => '0');
     signal immediate : std_logic_vector(31 downto 0) := (others => '0');
 
+    -- Signals for Reg_File
+    signal reg_out1 : std_logic_vector(31 downto 0);
+    signal reg_out2 : std_logic_vector(31 downto 0);
+
     -- Signals for PCback
     signal pcback_out : std_logic_vector(31 downto 0);
 
@@ -143,6 +147,19 @@ begin
         rs2 => rs2,
         rd => rd,
         immediate => immediate
+    );
+
+    -- Reg_File Instance
+    reg_file_inst: entity work.Reg_File
+    port map (
+        clk  => cpu_clock,
+        wren => EscreveReg,
+        rs1  => rs1,
+        rs2  => rs2,
+        rd   => rd,
+        data => x"00000000",
+        ro1  => reg_out1,
+        ro2  => reg_out2
     );
 
     OrigAULA_p <= OrigAULA;
