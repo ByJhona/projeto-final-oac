@@ -30,6 +30,7 @@ begin
         constant num_cycles : integer := 10;  -- Number of clock cycles you want to run
         variable cycle_count : integer := 0;  -- Internal counter
     begin
+        
         while cycle_count < num_cycles loop
             clk <= '0';
             wait for clk_period / 2;

@@ -28,126 +28,149 @@ entity CONTROL is
 end CONTROL;
 
 architecture behavior of CONTROL is
-	TYPE etapa_tipo IS (FETCH, DECODE, EXECUTE, MEMORYACCESS, WRITEBACK, UNDEFINED);
-	TYPE instrucao_tipo IS (TIPOR, LOAD, STORE, BRANCH, JUMP_JAL);
-	SIGNAL etapa_atual : etapa_tipo := FETCH;
-	SIGNAL instrucao : instrucao_tipo;
-	SIGNAL etapa_proxima : etapa_tipo;
-	SIGNAL reset : STD_LOGIC := '1';
-BEGIN
-	DEF_INSTRUCAO : PROCESS (opcode)
-	BEGIN
-		IF rising_edge(clock) THEN
-			CASE opcode IS
-				WHEN "0110011" =>
-					instrucao <= TIPOR;
-				WHEN "0000011" =>
-					instrucao <= LOAD;
-				WHEN "0100011" =>
-					instrucao <= STORE;
-				WHEN "1100011" =>
-					instrucao <= BRANCH;
-				WHEN "1101111" =>
-					instrucao <= JUMP_JAL;
-				WHEN OTHERS => NULL;
-			END CASE;
-		END IF;
-	END PROCESS;
+	type state is (FETCH, DECODE, EXECUTE, MEMORYACCESS, WRITEBACK);
+	type instruction_type is (RTYPE, LOAD, STORE, BEQ, JAL);
+	signal current_state : state := FETCH;
+	signal next_state : state;
+begin
 
-	
-	DEF_ETAPA : PROCESS (clock)
-	BEGIN
-		IF (rising_edge(clock)) THEN
-			CASE etapa_atual IS
-				WHEN FETCH =>
-					LeMem <= '1';
-					EscreveIR <= '1';
-					IouD <= '0';
-					OrigAULA <= "00";
-					OrigBULA <= "01";
-					ALUop <= "00";
-					OrigPC <= '0';
-					EscrevePC <= '1';
-					EscrevePCB <= '1';
-					etapa_atual <= DECODE;
+	DEFINE_SEQUENCER : process (clock)
+	begin
+		
+		if rising_edge(clock) then
+			current_state <= next_state;
+		end if;
+		
+	end process;
 
-				WHEN DECODE =>
-					OrigAULA <= "00";
-					OrigBULA <= "11";
-					ALUop <= "00";
+	DEFINE_INSTRUCTION_TYPE : process (opcode)
+	begin
+		
+		case opcode is
+			when "0110011" =>
+				instruction_type <= RTYPE;
+			when "0000011" =>
+				instruction_type <= LOAD;
+			when "0100011" =>
+				instruction_type <= STORE;
+			when "1100011" =>
+				instruction_type <= BEQ;
+			when "1101111" =>
+				instruction_type <= JAL;
+			when others => NULL;
+		end case;
+		
+	end process;
 
-					etapa_atual <= EXECUTE;
-					reset <= '0';
+	DEFINE_NEXT_STATE : process (current_state)
+	begin
 
-				WHEN EXECUTE =>
+		case current_state is
+			when FETCH =>
+				next_state <= DECODE;
+			when DECODE =>
+				next_state <= EXECUTE;
+			when EXECUTE =>
+				case instruction_type is
 
-					CASE instrucao IS -- Verifica o tipo da instrucao
-						WHEN TIPOR =>
-							OrigAULA <= "01";
-							OrigBULA <= "00";
-							ALUop <= "01";
-							etapa_atual <= MEMORYACCESS;
-						WHEN LOAD | STORE =>
-							OrigAULA <= "01";
-							OrigBULA <= "10";
-							ALUop <= "00";
+					when LOAD | STORE | RTYPE
+						next_state <= MEMORYACCESS;
+					when BEQ | JAL
+						next_state <= FETCH;
 
-							etapa_atual <= MEMORYACCESS;
-							reset <= '0';
-						WHEN BRANCH =>
-							OrigAULA <= "01";
-							OrigBULA <= "00";
-							ALUop <= "01";
-							EscrevePCCond <= '1';
-							OrigPC <= '1';
+				end case;
+			when MEMORYACCESS =>
+				case instruction_type is
 
-							reset <= '1'; --Rever
-							etapa_atual <= FETCH;
-						WHEN JUMP_JAL =>
-							OrigPC <= '1';
-							EscrevePC <= '1';
-							EscreveReg <= '1';
-							Mem2Reg <= "01";
-							reset <= '0';
-							etapa_atual <= MEMORYACCESS;
-						WHEN OTHERS => NULL;
-					END CASE;
+					when LOAD
+						next_state <= WRITEBACK;
 
-				WHEN MEMORYACCESS =>
-					CASE instrucao IS
-						WHEN TIPOR =>
-							EscreveReg <= '1';
-							Mem2Reg <= "00";
+					when others
+						next_state <= FETCH;
 
-							etapa_atual <= WRITEBACK;
-							reset <= '0';
-						WHEN LOAD =>
-							IouD <= '1';
-							LeMem <= '1';
-							EscreveMem <= '1';
-							Mem2Reg <= "10";
+				end case;
+			when WRITEBACK =>
+				next_state <= FETCH;
+		end case;
+	end process;
 
-							etapa_atual <= WRITEBACK;
-							reset <= '0';
-						WHEN STORE =>
-							IouD <= '1';
-							EscreveMem <= '1';
+	DEFINE_CONTROL_SIGNALS : process (current_state)
+	begin
+		
+		case current_state is
 
-							etapa_atual <= FETCH;
-							reset <= '1';
-						WHEN OTHERS => NULL;
+			when FETCH =>
+				IouD          <= '0';
+				LeMem         <= '1';
+				EscreveIR     <= '1';
+				OrigAULA      <= "10";
+				OrigBULA      <= "01";
+				ALUOp         <= "00";
+				OrigPC        <= '0';
+				EscrevePC     <= '1';
+				EscrevePCB    <= '1';
+				EscrevePCCond <= '0';
+				EscreveMem    <= '0';
+				
+			when DECODE =>
+				OrigAULA <= "00";
+				OrigBULA <= "11";
+				ALUOp    <= "00";
 
-					END CASE;
-					etapa_atual <= WRITEBACK;
+			when EXECUTE =>
 
-				WHEN WRITEBACK =>
-					Mem2Reg <= "01";
-					EscreveReg <= '1';
+				case instruction_type is 
+					when RTYPE =>
+						OrigAULA <= "01";
+						OrigBULA <= "00";
+						ALUOp    <= "01";
+						
+					when LOAD | STORE =>
+						OrigAULA <= "01";
+						OrigBULA <= "10";
+						ALUop    <= "00";
+				
+					when BEQ =>
+						OrigAULA      <= "01";
+						OrigBULA      <= "00";
+						ALUOp         <= "01";
+						OrigPC        <= '1';
+						EscrevePCCond <= '1';
+						
+					when JAL =>
+						OrigPC     <= '1';
+						EscrevePC  <= '1';
+						Mem2Reg    <= "01";
+						EscreveReg <= '1';
+						
+					when others => NULL;
+				end case;
 
-					etapa_atual <= FETCH;
-					reset <= '1';
-				WHEN OTHERS => NULL;
-			END CASE;
-		END IF;
-	END PROCESS;
+			when MEMORYACCESS =>
+
+				case instruction_type is
+					when RTYPE =>
+						Mem2Reg    <= "00";
+						EscreveReg <= '1';
+					
+					when LOAD =>
+						IouD  <= '1';
+						LeMem <= '1';
+						
+					when STORE =>
+						IouD       <= '1';
+						EscreveMem <= '1';
+						
+					when others => NULL;
+
+				end case;
+
+			when WRITEBACK =>
+				Mem2Reg    <= "10";
+				EscreveReg <= '1';
+				
+			when others => NULL;
+		end case;
+	end process;
+
 end behavior;
